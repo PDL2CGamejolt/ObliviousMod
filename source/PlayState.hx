@@ -1914,7 +1914,7 @@ class PlayState extends MusicBeatState
 		EngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		EngineWatermark.scrollFactor.set();
 		add(EngineWatermark);
-		EngineWatermark.text = SONG.song + " on " CoolUtil.difficultyString();
+		EngineWatermark.text = SONG.song;
 		}
 		if (ClientPrefs.hudType == 'Doki Doki+') {
 		// Add Engine watermark
