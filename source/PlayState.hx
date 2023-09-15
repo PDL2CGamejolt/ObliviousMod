@@ -1197,16 +1197,16 @@ class PlayState extends MusicBeatState
 	if (ClientPrefs.rateNameStuff == 'Quotes')
 	{
 	ratingStuff = [
-		['you suck ass lol', 0.2], //From 0% to 19%
-		['you aint doin good', 0.4], //From 20% to 39%
-		['Bad', 0.5], //From 40% to 49%
-		['Bruh', 0.6], //From 50% to 59%
-		['Meh', 0.69], //From 60% to 68%
-		['funny number', 0.7], //69%
-		['nice', 0.8], //From 70% to 79%
-		['awesome', 0.9], //From 80% to 89%
-		['thats amazing', 1], //From 90% to 99%
-		['PERFECT!!!!!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
+		['BAM! Ya ded.', 0.2], //From 0% to 19%
+		['Each miss you make is gonna kill ya', 0.4], //From 20% to 39%
+		['BRUH', 0.5], //From 40% to 49%
+		['Why do you even bother?', 0.6], //From 50% to 59%
+		['Try again.', 0.69], //From 60% to 68%
+		['A very sus number', 0.7], //69%
+		['Wow. You are pretty good!', 0.8], //From 70% to 79%
+		['HOLD ON', 0.9], //From 80% to 89%
+		['How?', 1], //From 90% to 99%
+		['Cheater!', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 	}
 	if (ClientPrefs.rateNameStuff == 'Psych Quotes')
@@ -1248,12 +1248,12 @@ class PlayState extends MusicBeatState
 	if (ClientPrefs.rateNameStuff == 'Letters')
 	{
 	ratingStuff = [
-		['HOW?', 0.2], //From 0% to 19%
+		['G', 0.2], //From 0% to 19%
 		['F', 0.4], //From 20% to 39%
 		['E', 0.5], //From 40% to 49%
 		['D', 0.6], //From 50% to 59%
 		['C', 0.69], //From 60% to 68%
-		['FUNNY', 0.7], //69%
+		['B.5', 0.7], //69%
 		['B', 0.8], //From 70% to 79%
 		['A', 0.9], //From 80% to 89%
 		['S', 0.97], //From 90% to 98%
@@ -1906,7 +1906,7 @@ class PlayState extends MusicBeatState
 		EngineWatermark.scrollFactor.set();
 		if (ClientPrefs.downScroll) EngineWatermark.y = (FlxG.height * 0.9 + 50);
 		add(EngineWatermark);
-		EngineWatermark.text = "You are now playing " + SONG.song + " on " + CoolUtil.difficultyString() + "! (JSE v" + MainMenuState.psychEngineJSVersion + ")";
+		EngineWatermark.text = "You are playing " + SONG.song + " on " + CoolUtil.difficultyString() + "! (Mid-Effort Oblivious on JSE v" + MainMenuState.psychEngineJSVersion + ")";
 		}
 		if (ClientPrefs.hudType == 'Dave and Bambi') {
 		// Add Engine watermark
@@ -1914,7 +1914,7 @@ class PlayState extends MusicBeatState
 		EngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		EngineWatermark.scrollFactor.set();
 		add(EngineWatermark);
-		EngineWatermark.text = SONG.song;
+		EngineWatermark.text = SONG.song + " on " CoolUtil.difficultyString();
 		}
 		if (ClientPrefs.hudType == 'Doki Doki+') {
 		// Add Engine watermark
