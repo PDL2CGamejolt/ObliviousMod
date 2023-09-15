@@ -265,7 +265,6 @@ class FunkinLua {
 			@:privateAccess
 			if(PlayState.instance != null) {
 				Achievements.unlockAchievement(name);
-				PlayState.instance.startAchievement(name);
 				ClientPrefs.saveSettings();
 				return true;
 			}
