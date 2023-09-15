@@ -240,15 +240,15 @@ class ChartingState extends MusicBeatState
 			CoolUtil.difficulties = CoolUtil.defaultDifficulties.copy();
 
 			_song = {
-				song: 'Test',
+				song: 'Tutorial',
 				notes: [],
 				events: [],
-				bpm: 150.0,
+				bpm: 100.0,
 				needsVoices: true,
 				arrowSkin: '',
 				splashSkin: 'noteSplashes',//idk it would crash if i didn't
 				player1: 'bf',
-				player2: 'dad',
+				player2: 'gf',
 				gfVersion: 'gf',
 				speed: 1,
 				stage: 'stage',
@@ -414,8 +414,7 @@ class ChartingState extends MusicBeatState
 		\nHold Alt and click on a note to change it to the selected note type
 		\nHold CTRL and use the Mouse Wheel to decrease/increase the note's sustain length
 		\nZ/X - Zoom in/out
-		\nC - Draw your charts! Easier charting for your Bambi fansongs lmao
-		\n
+		\nC - Draw your charts!
 		\n(Hold) CTRL + Left/Right - Shift the currently selected note
 		\nEsc - Test your chart inside Chart Editor
 		\nEnter - Play your chart
@@ -609,12 +608,12 @@ class ChartingState extends MusicBeatState
 		clear_notes.color = FlxColor.RED;
 		clear_notes.label.color = FlxColor.WHITE;
 
-		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 999999, 3);
+		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 9999999999, 3);
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 		blockPressWhileTypingOnStepper.push(stepperBPM);
 
-		var stepperSpeed:FlxUINumericStepper = new FlxUINumericStepper(10, stepperBPM.y + 35, 0.1, 1, 0.1, 100, 1);
+		var stepperSpeed:FlxUINumericStepper = new FlxUINumericStepper(10, stepperBPM.y + 35, 0.1, 1, 0.1, 9999999999, 1);
 		stepperSpeed.value = _song.speed;
 		stepperSpeed.name = 'song_speed';
 		blockPressWhileTypingOnStepper.push(stepperSpeed);
