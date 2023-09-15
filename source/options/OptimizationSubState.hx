@@ -107,6 +107,14 @@ class OptimizationSubState extends BaseOptionsMenu
 			false); //Default value
 		addOption(option);
 
+		
+		var option:Option = new Option('Hide HUD',
+			'If checked, hides most HUD elements.',
+			'hideHud',
+			'bool',
+			false);
+		addOption(option);
+
 		super();
 	}
 }
