@@ -78,13 +78,6 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.decimals = 2;
 		addOption(option);
 
-		var option:Option = new Option('Hide HUD',
-			'If checked, hides most HUD elements.',
-			'hideHud',
-			'bool',
-			false);
-		addOption(option);
-
 		var option:Option = new Option('Hide ScoreTxt',
 			'If checked, hides the score text. Dunno why you would enable this but eh, alright.',
 			'hideScore',
