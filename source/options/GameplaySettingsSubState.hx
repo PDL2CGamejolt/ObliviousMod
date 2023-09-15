@@ -116,7 +116,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			5); //Default value
 		option.scrollSpeed = 2;
 		option.minValue = 1;
-		option.maxValue = 100;
+		option.maxValue = 10000000000;
 		option.changeValue = 0.1;
 		option.displayFormat = '%vX';
 		addOption(option);
@@ -137,14 +137,14 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('CommunityGame Mode',
-			"What do you think this does?",
+			"It makes Girlfriend very... uh... suggestive?",
 			'communityGameMode',
 			'bool',
 			false);
 		addOption(option);
 
 		var option:Option = new Option('CommunityGame Botplay Mode',
-			"If enabled, Botplay inputs will have varying delays, like if a human was playing. \n(Disables the 'Even LESS Botplay Lag' option, even if it's on)",
+			"If enabled, Botplay inputs will have varying delays, like if a human was playing.\n(Disables the 'Even LESS Botplay Lag' option, even if it's on)",
 			'communityGameBot',
 			'bool',
 			false);
@@ -218,7 +218,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'If checked, the input system is more spammable.',
 			'ezSpam',
 			'bool',
-			false);
+			true);
 		addOption(option);
 
 		var option:Option = new Option('Shit Gives Miss',
@@ -265,7 +265,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Hitsound Volume',
-			'Funny notes does \"Tick!\" when you hit them."',
+			'The notes make a \"Tick!\" sound when you hit them."',
 			'hitsoundVolume',
 			'percent',
 			0);
@@ -346,8 +346,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'float',
 			10);
 		option.scrollSpeed = 5;
-		option.minValue = 2;
-		option.maxValue = 20;
+		option.minValue = 0;
+		option.maxValue = 10000000000;
 		if (ClientPrefs.safeFrames > 10) option.displayFormat = '%v (Will not save)';
 		option.changeValue = 0.1;
 		addOption(option);
