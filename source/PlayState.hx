@@ -5403,44 +5403,8 @@ if (ClientPrefs.showNPS)
 		if (health > maxHealth)
 			health = maxHealth;
 
-		if (iconP1.animation.frames == 3) {
-			if (healthBar.percent < 20)
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
-			else if (healthBar.percent > 80)
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 2;
-			else
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
-		} else {
-			if (healthBar.percent < 20)
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
-		else
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
-		}
-		if (iconP2.animation.frames == 3) {
-			if (healthBar.percent > 80)
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
-			else if (healthBar.percent < 20)
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 2;
-		else
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
-		} else {
-			if (healthBar.percent > 80)
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
-		else
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
-		}
-		
-		/*
-		if (healthBar.percent < 20)
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 1;
-		else
-			(opponentChart ? iconP2 : iconP1).animation.curAnim.curFrame = 0;
-
-		if (healthBar.percent > 80)
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 1;
-		else
-			(opponentChart ? iconP1 : iconP2).animation.curAnim.curFrame = 0;
-		*/
+		iconP1.updateAnim(healthBar.percent);
+		iconP2.updateAnim(100 - healthBar.percent);
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene && !softlocked) {
 			persistentUpdate = false;
