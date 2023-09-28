@@ -97,6 +97,12 @@ class HealthIcon extends FlxSprite
 		}
 	}
 
+	public function bounce() {
+		if(canBounce) {
+			var mult:Float = 1.2;
+			scale.set(mult, mult);
+			updateHitbox();
+		}
 	override function updateHitbox()
 	{
 		super.updateHitbox();
