@@ -46,10 +46,10 @@ class FPS extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("_sans", 14, color);
+		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/vcr.ttf").fontName, 14, color);
 		autoSize = LEFT;
 		multiline = true;
-		text = "FPS: ";
+		text = "Frames Per Second: ";
 
 		cacheCount = 0;
 		currentTime = 0;
@@ -82,12 +82,22 @@ class FPS extends TextField
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-			text = "FPS: " + currentFPS;
+			text = "Frames Per Second: " + currentFPS;
 			var memoryMegas:Float = 0;
 			
 			#if openfl
 			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			text += "\nMemory: " + memoryMegas + " MB";
+			if (memoryMegas > 1000)
+			{
+				var memoryGB = (memoryMegas / 1000);
+				text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB";
+			}
+			else
+			{
+				text += "\nMemory: " + memoryMegas + " MB";
+			}
+			text += "\nVanta Engine"
+			text += "\nBuilt on JSE v1.10.0";
 			#end
 
 			textColor = 0xFFFFFFFF;
