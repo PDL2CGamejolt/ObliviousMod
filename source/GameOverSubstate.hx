@@ -180,7 +180,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		if (!isEnding)
 		{
-			gameoverTxt.visible = false
+			gameoverTxt.visible = false;
 			isEnding = true;
 			boyfriend.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
