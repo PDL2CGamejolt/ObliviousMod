@@ -7826,9 +7826,6 @@ if (!allSicks && ClientPrefs.colorRatingFC && songMisses > 0 && ClientPrefs.hudT
 		missCombo += 1;
 		health -= daNote.missHealth * missCombo;
 		}
-		if (ClientPrefs.healthGainType == 'Vanta Engine') {
-		health -= 0.03 * healthLoss;
-		}
 
 
 		if(instakillOnMiss)
