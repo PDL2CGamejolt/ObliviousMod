@@ -55,6 +55,16 @@ class GameOverSubstate extends MusicBeatSubstate
 		boyfriend.y += boyfriend.positionArray[1];
 		add(boyfriend);
 
+		public var gameoversine:Float = 0;
+                public var gameoverTxt:FlxText;
+		gameoverTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "Game Over! Press SPACE to try again.", 32);
+		gameoverTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		gameoverTxt.scrollFactor.set();
+		gameoverTxt.borderSize = 1.25;
+		gameoverTxt.visible = true
+		gameoverSine += 180 * elapsed;
+		gameoverTxt.alpha = 1 - Math.sin((Math.PI * gameoverSine) / 180 * playbackRate);
+
 		camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
 		FlxG.sound.play(Paths.sound(deathSoundName));
@@ -90,6 +100,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (controls.ACCEPT)
 		{
 			endBullshit();
+			gameoverTxt.visible = false
 		}
 
 		if (controls.BACK)
@@ -98,6 +109,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			PlayState.deathCounter = 0;
 			PlayState.seenCutscene = false;
 			PlayState.chartingMode = false;
+			gameoverTxt.visible = false
 
 			WeekData.loadTheFirstEnabledMod();
 			if (PlayState.isStoryMode)
@@ -168,6 +180,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		if (!isEnding)
 		{
+			gameoverTxt.visible = false
 			isEnding = true;
 			boyfriend.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
