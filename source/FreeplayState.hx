@@ -216,14 +216,14 @@ class FreeplayState extends MusicBeatState
 
 		#if PRELOAD_ALL
 		#if android
-		var leText:String = "Press X to listen to the Song / Press C to open the Gameplay Changers Menu / Press Y to Reset your Score and Accuracy.";
+		var leText:String = "Press X to listen to the Song / Press C to open the Gameplay Changers Menu / Press Y to reset the Song.";
 		var size:Int = 16;
 		#else
-		var leText:String = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to reset the Song.";
 		var size:Int = 16;
 		#end
 		#else
-		var leText:String = "Press C to open the Gameplay Changers Menu / Press Y to Reset your Score and Accuracy.";
+		var leText:String = "Press C to open the Gameplay Changers Menu / Press Y to reset the Song.";
 		var size:Int = 18;
 		#end
 		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
@@ -306,7 +306,7 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 
-		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+		scoreText.text = 'HIGH SCORE: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 
 		var upP = controls.UI_UP_P;
@@ -408,7 +408,7 @@ class FreeplayState extends MusicBeatState
 				trace(poop + '\'s .ogg does not exist!');
 				FlxG.sound.play(Paths.sound('invalidJSON'));
 				FlxG.camera.shake(0.05, 0.05);
-				var funnyText = new FlxText(12, FlxG.height - 24, 0, "Invalid Song!");
+				var funnyText = new FlxText(12, FlxG.height - 24, 0, "NO SONG FOUND");
 				funnyText.scrollFactor.set();
 				funnyText.screenCenter();
 				funnyText.x = 5;
