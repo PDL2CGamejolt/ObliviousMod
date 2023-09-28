@@ -24,6 +24,8 @@ class GameOverSubstate extends MusicBeatSubstate
 	public static var deathSoundName:String = 'fnf_loss_sfx';
 	public static var loopSoundName:String = 'gameOver';
 	public static var endSoundName:String = 'gameOverEnd';
+	public var gameoversine:Float = 0;
+        public var gameoverTxt:FlxText;
 
 	public static var instance:GameOverSubstate;
 
@@ -55,8 +57,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		boyfriend.y += boyfriend.positionArray[1];
 		add(boyfriend);
 
-		public var gameoversine:Float = 0;
-                public var gameoverTxt:FlxText;
 		gameoverTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "Game Over! Press SPACE to try again.", 32);
 		gameoverTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		gameoverTxt.scrollFactor.set();
