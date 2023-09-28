@@ -61,7 +61,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		gameoverTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		gameoverTxt.scrollFactor.set();
 		gameoverTxt.borderSize = 1.25;
-		gameoverTxt.visible = true
+		gameoverTxt.visible = true;
 		gameoverSine += 180 * elapsed;
 		gameoverTxt.alpha = 1 - Math.sin((Math.PI * gameoverSine) / 180 * playbackRate);
 
@@ -100,7 +100,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (controls.ACCEPT)
 		{
 			endBullshit();
-			gameoverTxt.visible = false
+			gameoverTxt.visible = false;
 		}
 
 		if (controls.BACK)
@@ -109,7 +109,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			PlayState.deathCounter = 0;
 			PlayState.seenCutscene = false;
 			PlayState.chartingMode = false;
-			gameoverTxt.visible = false
+			gameoverTxt.visible = false;
 
 			WeekData.loadTheFirstEnabledMod();
 			if (PlayState.isStoryMode)
