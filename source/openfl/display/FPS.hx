@@ -96,7 +96,7 @@ class FPS extends TextField
 			{
 				text += "\nMemory: " + memoryMegas + " MB";
 			}
-			text += "\nVanta Engine"
+			text += "\nVanta Engine";
 			text += "\nBuilt on JSE v1.10.0";
 			#end
 
