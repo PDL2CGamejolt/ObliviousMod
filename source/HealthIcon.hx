@@ -103,6 +103,7 @@ class HealthIcon extends FlxSprite
 			scale.set(mult, mult);
 			updateHitbox();
 		}
+	}
 	override function updateHitbox()
 	{
 		super.updateHitbox();
