@@ -12,7 +12,7 @@ import openfl.display._internal.stats.DrawCallContext;
 #if flash
 import openfl.Lib;
 #end
-
+import external.memory.Memory;
 #if openfl
 import openfl.system.System;
 #end
@@ -90,18 +90,18 @@ class FPS extends TextField
 			if (memoryMegas > 1000)
 			{
 				var memoryGB = (memoryMegas / 1000);
-				text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB";
+				text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB" + " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "");
 			}
 			else
 			{
-				text += "\nMemory: " + memoryMegas + " MB";
+				text += "\nMemory: " + memoryMegas + " MB" + " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "");
 			}
 			text += "\nVanta Engine";
 			text += "\nBuilt on JSE v1.10.0";
 			#end
 
 			textColor = 0xFFFFFFFF;
-			if (memoryMegas > 3000 || currentFPS <= ClientPrefs.framerate / 2)
+			if (currentFPS <= ClientPrefs.framerate / 2)
 			{
 				textColor = 0xFFFF0000;
 			}
