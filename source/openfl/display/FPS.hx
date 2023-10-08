@@ -83,7 +83,7 @@ class FPS extends TextField
 		if (currentCount != cacheCount /*&& visible*/)
 		{
 			text = "Frames Per Second: " + currentFPS;
-		        text += "\nMemory: " + CoolUtil.formatBytes(Memory.getCurrentUsage()) + " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "");
+		        text += "\nMemory: " + CoolUtil.formatBytes(Memory.getCurrentUsage()) + " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "";
 			text += "\nVanta Engine";
 			text += "\nA modified version of JSE v1.10.0";
 			text += "\n";
