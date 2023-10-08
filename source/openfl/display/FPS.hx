@@ -47,7 +47,7 @@ class FPS extends TextField
 		selectable = false;
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/vcr.ttf").fontName, 14, color);
-		autoSize = LEFT;
+		autoSize = RIGHT;
 		multiline = true;
 		text = "Frames Per Second: ";
 
@@ -82,34 +82,25 @@ class FPS extends TextField
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-			text = "Frames Per Second: " + currentFPS;
+			text = (ClientPrefs.showFPS ? "Frames Per Second: " + currentFPS : "");
 			var memoryMegas:Float = 0;
+			
+			text += "\nMemory: " + CoolUtil.formatBytes(Memory.getCurrentUsage()) + " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "";
+			text += "\nVanta Engine, a modified version of JSE v1.10.0";
 
-			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			if (memoryMegas > 5000)
+			textColor = 0xFFFFFFFF;
+			if (currentFPS <= ClientPrefs.framerate / 2)
 			{
-				text += "\nTOO MUCH MEMORY";
+				textColor = 0xFFFF0000;
 			}
-			if (memoryMegas > 1000 || memoryMegas < 5000)
-			{
-				var memoryGB = (memoryMegas / 1000);
-				text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB";
-			}
-			else
-			{
-				text += "\nMemory: " + memoryMegas + " MB";
-			}
-			text += "\nA modified version of JSE v1.10.0";
+
+			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
+			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
+			text += "\nstageDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE);
+			text += "\nstage3DDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE3D);
+			#end
+
 			text += "\n";
-			#end}
-		}
-
-		textColor = 0xFFFFFFFF;
-		
-		if (currentFPS <= ClientPrefs.framerate / 2)
-		{
-			textColor = 0xFFFF0000;
-		}
 		}
 
 		cacheCount = currentCount;
