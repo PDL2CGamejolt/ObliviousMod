@@ -85,7 +85,17 @@ class FPS extends TextField
 			text = (ClientPrefs.showFPS ? "Frames Per Second: " + currentFPS : "");
 			var memoryMegas:Float = 0;
 			
-			text += "\nMemory: " + CoolUtil.formatBytes(Memory.getCurrentUsage()) + " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "";
+			#if openfl
+			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
+			if (memoryMegas > 1000)
+			{
+				var memoryGB = (memoryMegas / 1000);
+				text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB";
+			}
+			else
+			{
+				text += "\nMemory: " + memoryMegas + " MB";
+			}
 			text += "\nVanta Engine, a modified version of JSE v1.10.0";
 
 			textColor = 0xFFFFFFFF;
@@ -94,11 +104,6 @@ class FPS extends TextField
 				textColor = 0xFFFF0000;
 			}
 
-			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
-			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
-			text += "\nstageDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE);
-			text += "\nstage3DDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE3D);
-			#end
 
 			text += "\n";
 		}
