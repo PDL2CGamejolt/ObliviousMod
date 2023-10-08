@@ -83,7 +83,22 @@ class FPS extends TextField
 		if (currentCount != cacheCount /*&& visible*/)
 		{
 			text = "Frames Per Second: " + currentFPS;
-		        text += "\nMemory: " + CoolUtil.formatBytes(Memory.getCurrentUsage()) + " / " + CoolUtil.formatBytes(Memory.getPeakUsage());
+			var memoryMegas:Float = 0;
+
+			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
+			if (memoryMegas > 5000)
+			{
+				text += "\nTOO MUCH MEMORY";
+			}
+			if (memoryMegas > 1000 || memoryMegas < 5000)
+			{
+				var memoryGB = (memoryMegas / 1000);
+				text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB";
+			}
+			else
+			{
+				text += "\nMemory: " + memoryMegas + " MB";
+			}
 			text += "\nA modified version of JSE v1.10.0";
 			text += "\n";
 			#end
