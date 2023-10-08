@@ -16,7 +16,7 @@ class OutdatedState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
 
-	public static var currChanges:String = "dk";
+	public static var currChanges:String = "N/A";
 
 	var warnText:FlxText;
 	override function create()
@@ -31,7 +31,7 @@ class OutdatedState extends MusicBeatState
 
 		#if android
 		warnText = new FlxText(0, 0, FlxG.width,
-			"Your version of JS Engine is outdated!\nYou are on "
+			"Your version of Vanta/JS Engine is outdated!\nYou are on "
 			+ MainMenuState.psychEngineJSVersion
 			+ "\nwhile the most recent version is "
 			+ TitleState.updateVersion
@@ -43,7 +43,7 @@ class OutdatedState extends MusicBeatState
 			32);
 		#else
 		warnText = new FlxText(0, 0, FlxG.width,
-			"Your version of JS Engine is outdated!\nYou are on "
+			"Your version of Vanta/JS Engine is outdated!\nYou are on "
 			+ MainMenuState.psychEngineJSVersion
 			+ "\nwhile the most recent version is "
 			+ TitleState.updateVersion
@@ -68,7 +68,7 @@ class OutdatedState extends MusicBeatState
 		if(!leftState) {
 			if (controls.ACCEPT) {
 				leftState = true;
-				CoolUtil.browserLoad("https://github.com/JordanSantiagoYT/FNF-PsychEngine-NoBotplayLag/releases/latest");
+				CoolUtil.browserLoad("https://github.com/PDL2CGamejolt/VantaEngineNEW/releases");
 			}
 			else if(controls.BACK) {
 				leftState = true;
