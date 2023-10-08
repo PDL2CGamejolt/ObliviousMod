@@ -101,7 +101,7 @@ class FPS extends TextField
 			}
 			text += "\nA modified version of JSE v1.10.0";
 			text += "\n";
-			#end
+			#end}
 		}
 
 		textColor = 0xFFFFFFFF;
