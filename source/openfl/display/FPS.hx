@@ -82,7 +82,6 @@ class FPS extends TextField
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-                        textColor = 0xFFFFFFFF;
 			text = "Frames Per Second: " + currentFPS;
 		        text += "\nMemory: " + CoolUtil.formatBytes(Memory.getCurrentUsage()) + (ClientPrefs.showMaxRamUsage ? " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "");
 			text += "\nVanta Engine";
@@ -90,6 +89,14 @@ class FPS extends TextField
 			text += "\nA modified version of JSE v1.10.0";
 			text += "\n";
 			#end
+		}
+
+		textColor = 0xFFFFFFFF;
+		
+		if (currentFPS <= ClientPrefs.framerate / 2)
+		{
+			textColor = 0xFFFF0000;
+		}
 		}
 
 		cacheCount = currentCount;
