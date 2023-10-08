@@ -83,21 +83,10 @@ class FPS extends TextField
 		if (currentCount != cacheCount /*&& visible*/)
 		{
 			text = "Frames Per Second: " + currentFPS;
-			var memoryMegas:Float = 0;
-			
-			#if openfl
-			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			if (memoryMegas > 1000)
-			{
-				var memoryGB = (memoryMegas / 1000);
-				text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB" + " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "");
-			}
-			else
-			{
-				text += "\nMemory: " + memoryMegas + " MB" + " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "");
-			}
+		        text += "\nMemory: " + CoolUtil.formatBytes(Memory.getCurrentUsage()) + (ClientPrefs.showMaxRamUsage ? " / " + CoolUtil.formatBytes(Memory.getPeakUsage()) : "");
 			text += "\nVanta Engine";
 			text += "\nBuilt on JSE v1.10.0";
+			text += "\nA modified version of JSE v1.10.0";
 			#end
 
 			textColor = 0xFFFFFFFF;
