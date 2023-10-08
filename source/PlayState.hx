@@ -5403,9 +5403,6 @@ if (ClientPrefs.showNPS)
 		if (health > maxHealth)
 			health = maxHealth;
 
-		iconP1.updateAnim(healthBar.percent);
-		iconP2.updateAnim(100 - healthBar.percent);
-
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene && !softlocked) {
 			persistentUpdate = false;
 			paused = true;
