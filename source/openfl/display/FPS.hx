@@ -12,7 +12,6 @@ import openfl.display._internal.stats.DrawCallContext;
 #if flash
 import openfl.Lib;
 #end
-import external.memory.Memory;
 #if openfl
 import openfl.system.System;
 #end
