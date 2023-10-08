@@ -25,7 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineJSVersion:String = '1.10.0'; //This is also used for Discord RPC
+	public static var psychEngineJSVersion:String = '1.0'; //This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.6.3'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
@@ -38,7 +38,6 @@ class MainMenuState extends MusicBeatState
 		'freeplay',
 		#if MODS_ALLOWED 'mods', #end
 		'credits',
-		#if !switch 'donate', #end
 		'options'
 	];
 
@@ -215,11 +214,6 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == 'donate')
-				{
-					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
-				}
-				else
 				{
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
