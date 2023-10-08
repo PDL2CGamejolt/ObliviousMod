@@ -82,7 +82,7 @@ class TitleState extends MusicBeatState
 
 	public static var titleJSON:TitleData;
 
-	public static var updateVersion:String = '';
+	public static var updateVersion:String = '1.0';
 
 	override public function create():Void
 	{
