@@ -85,7 +85,11 @@ class FPS extends TextField
 			var memoryMegas:Float = 0;
 			
 			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			if (memoryMegas > 1000)
+			if (memoryMegas > 7000)
+			{
+				text += "\nTOO MUCH MEMORY";
+			}
+			if (memoryMegas > 1000 && memoryMegas < 7000)
 			{
 				var memoryGB = (memoryMegas / 1000);
 				text += "\nMemory: " + FlxMath.roundDecimal(memoryGB, 2) + " GB";
@@ -94,7 +98,8 @@ class FPS extends TextField
 			{
 				text += "\nMemory: " + memoryMegas + " MB";
 			}
-			text += "\nVanta Engine, a modified version of JSE v1.10.0";
+			text += "\nVanta Engine";
+			text += "\na modified JSE v1.10.0";
 
 			textColor = 0xFFFFFFFF;
 			if (currentFPS <= ClientPrefs.framerate / 2)
