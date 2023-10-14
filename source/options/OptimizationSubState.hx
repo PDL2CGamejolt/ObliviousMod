@@ -107,7 +107,6 @@ class OptimizationSubState extends BaseOptionsMenu
 			false); //Default value
 		addOption(option);
 
-		
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
 			'hideHud',
@@ -115,6 +114,27 @@ class OptimizationSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('Hide ScoreTxt',
+			'If checked, hides the score text. Dunno why you would enable this but eh, alright.',
+			'hideScore',
+			'bool',
+			false);
+		addOption(option);
+
+		var option:Option = new Option('Enable Note Colors',
+			'If unchecked, notes won\'t be able to use your currently set colors. \nI think this decreases loading time.',
+			'enableColorShader',
+			'bool',
+			true);
+		addOption(option);
+
+		var option:Option = new Option('Show Notes',
+			"If unchecked, the notes will be invisible. You can still play them though! It also can save some RAM.",
+			'showNotes',
+			'bool',
+			true);
+		addOption(option);
+		
 		super();
 	}
 }
