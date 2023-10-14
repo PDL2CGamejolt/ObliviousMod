@@ -38,21 +38,21 @@ class VisualsUISubState extends BaseOptionsMenu
 			"If unchecked, hitting \"Sick!\" notes won't show particles.",
 			'noteSplashes',
 			'bool',
-			true);
+			false);
 		addOption(option);
 
 		var option:Option = new Option('Opponent Note Splashes',
 			"If checked, opponent note hits will show particles.",
 			'oppNoteSplashes',
 			'bool',
-			true);
+			false);
 		addOption(option);
 
 		var option:Option = new Option('Show NPS',
 			'If checked, the game will show your current NPS.',
 			'showNPS',
 			'bool',
-			true);
+			false);
 		addOption(option);
 
 		var option:Option = new Option('Max Splashes: ',
@@ -78,13 +78,6 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.decimals = 2;
 		addOption(option);
 
-		var option:Option = new Option('Hide ScoreTxt',
-			'If checked, hides the score text. Dunno why you would enable this but eh, alright.',
-			'hideScore',
-			'bool',
-			false);
-		addOption(option);
-
 		var option:Option = new Option('Show Maximum Score',
 			'If checked, the score text will show the highest score you can achieve\nif you were to have 100% accuracy throughout the song.',
 			'showMaxScore',
@@ -103,7 +96,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'If checked, the timebar will also show the current Playback Speed you are playing at.',
 			'timebarShowSpeed',
 			'bool',
-			false);
+			true);
 		addOption(option);
 
 		var option:Option = new Option('Results Screen',
@@ -134,13 +127,6 @@ class VisualsUISubState extends BaseOptionsMenu
 			'colorQuants',
 			'bool',
 			false);
-		addOption(option);
-
-		var option:Option = new Option('Enable Note Colors',
-			'If unchecked, notes won\'t be able to use your currently set colors. \nI think this decreases loading time.',
-			'enableColorShader',
-			'bool',
-			true);
 		addOption(option);
 
 		var option:Option = new Option('Camera Note Movement',
@@ -218,14 +204,14 @@ class VisualsUISubState extends BaseOptionsMenu
 			"If this is checked, hitting a Double Note will show an afterimage, just like in VS Impostor!",
 			'doubleGhost',
 			'bool',
-			true);
+			false);
 		addOption(option);
 
 		var option:Option = new Option('Double Note Ghost Camera Zoom',
 			'If unchecked, Double Note Ghosts will not zoom when they activate during gameplay.',
 			'doubleGhostZoom',
 			'bool',
-			true);
+			false);
 		addOption(option);
 		
 		var option:Option = new Option('Time Bar:',
@@ -284,7 +270,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			['Psych Engine', 'VS Impostor', 'Base Game', 'Doki Doki+', 'TGT V4', 'Indie Cross']);
 		addOption(option);
 
-		var option:Option = new Option('long ass health bar',
+		var option:Option = new Option('Long Heath Bar',
 			"If this is checked, the Health Bar will become LOOOOOONG",
 			'longHPBar',
 			'bool',
@@ -363,13 +349,6 @@ class VisualsUISubState extends BaseOptionsMenu
 			'ratingCounter',
 			'bool',
 			false);
-		addOption(option);
-
-		var option:Option = new Option('Show Notes',
-			"If unchecked, the notes will be invisible. You can still play them though!",
-			'showNotes',
-			'bool',
-			true);
 		addOption(option);
 
 		var option:Option = new Option('Score Text Zoom on Hit',
