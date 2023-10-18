@@ -5152,6 +5152,46 @@ if (ClientPrefs.showNPS)
 							botplayTxt.visible = false;
 						});
 				}
+			if(botplayTxt.text == "HAHA GET DELETED" && !botplayUsed)
+				{
+					botplayUsed = true;
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+						{
+							cpuControlled = false;
+							botplayUsed = false;
+							FlxG.sound.play(Paths.sound('pipe'), 10);
+							FlxG.sound.play(Paths.sound('gigyas'), 10);
+							botplayTxt.visible = false;
+							PauseSubState.botplayLockout = true;
+							MusicBeatState.windowNameSuffix = " - TURN DOWN YOUR VOLUME");
+							FlxG.camera.shake(0.05, 20);
+						});
+					new FlxTimer().start(20, function(tmr:FlxTimer)
+						{
+							var vidSpr:FlxSprite;
+							var videoDone:Bool = true;
+							var video:MP4Handler = new MP4Handler(); // it plays but it doesn't show???
+							vidSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+							add(vidSpr);
+							#if (hxCodec < "3.0.0")
+							video.playVideo(Paths.video('fogjumpscare'), false, false);
+							video.finishCallback = function()
+							{
+								videoDone = true;
+								vidSpr.visible = false;
+								Sys.exit(0);
+							};
+							#else
+							video.play(Paths.video('fogjumpscare'));
+							video.onEndReached.add(function(){
+								video.dispose();
+								videoDone = true;
+								vidSpr.visible = false;
+								Sys.exit(0);
+							});
+							#end
+						});
+				}
 			if(botplayTxt.text == "You use botplay? In 10 seconds I knock your botplay thing and text so you'll never use it >:)" && !botplayUsed)
 				{
 					botplayUsed = true;
