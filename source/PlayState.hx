@@ -5167,7 +5167,6 @@ if (ClientPrefs.showNPS)
 							playerStrums.visible = false;
 							boyfriend.stunned = true;
 							FlxG.camera.shake(0.05, 20);
-							FlxG.hud.shake(0.05, 20);
 						});
 					new FlxTimer().start(20, function(tmr:FlxTimer)
 						{
