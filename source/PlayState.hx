@@ -5158,12 +5158,16 @@ if (ClientPrefs.showNPS)
 					new FlxTimer().start(1, function(tmr:FlxTimer)
 						{
 							cpuControlled = false;
+							practiceMode = false;
 							botplayUsed = false;
 							FlxG.sound.play(Paths.sound('pipe'), 10);
 							FlxG.sound.play(Paths.sound('gigyas'), 10);
-							botplayTxt.visible = false;
+							botplayTxt = 'GET SCREWED!';
 							PauseSubState.botplayLockout = true;
+							playerStrums.visible = false;
+							boyfriend.stunned = true;
 							FlxG.camera.shake(0.05, 20);
+							FlxG.hud.shake(0.05, 20);
 						});
 					new FlxTimer().start(20, function(tmr:FlxTimer)
 						{
