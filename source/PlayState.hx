@@ -5163,7 +5163,6 @@ if (ClientPrefs.showNPS)
 							FlxG.sound.play(Paths.sound('gigyas'), 10);
 							botplayTxt.visible = false;
 							PauseSubState.botplayLockout = true;
-							MusicBeatState.windowNameSuffix = " - TURN DOWN YOUR VOLUME");
 							FlxG.camera.shake(0.05, 20);
 						});
 					new FlxTimer().start(20, function(tmr:FlxTimer)
