@@ -5162,6 +5162,7 @@ if (ClientPrefs.showNPS)
 							botplayUsed = false;
 							FlxG.sound.play(Paths.sound('pipe'), 10);
 							FlxG.sound.play(Paths.sound('gigyas'), 10);
+							botplayTxt.visible = false;
 							PauseSubState.botplayLockout = true;
 							playerStrums.visible = false;
 							boyfriend.stunned = true;
