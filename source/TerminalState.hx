@@ -360,7 +360,6 @@ class TerminalState extends MusicBeatState
 				});
 			});
 	}
-	}
 }
 
 class TerminalCommand
