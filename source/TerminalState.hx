@@ -359,7 +359,8 @@ class TerminalState extends MusicBeatState
 					LoadingState.loadAndSwitchState(new PlayState());
 				});
 			});
-		}});
+	 });
+	 }
 	}
 }
 
