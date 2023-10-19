@@ -341,7 +341,7 @@ class TerminalState extends MusicBeatState
 			fakeDisplayGroup.clear();
 
 			});
-			function()
+                        FlxG.sound.play(Paths.sound('iTrollYou', 'shared'),function()
 			{
 				new FlxTimer().start(1, function(timer:FlxTimer)
 				{
