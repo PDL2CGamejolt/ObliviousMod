@@ -5812,6 +5812,16 @@ if (ClientPrefs.showNPS)
 
 	function openChartEditor()
 	{
+	if(Paths.formatToSongPath(SONG.song) == 'test') {
+		persistentUpdate = false;
+		paused = true;
+		cancelMusicFadeTween();
+		MusicBeatState.switchState(new TerminalState());
+		#if desktop
+		DiscordClient.changePresence("DEV CONSOLE", null, null, true);
+		#end
+	}
+	else {
 		persistentUpdate = false;
 		paused = true;
 		cancelMusicFadeTween();
@@ -5820,6 +5830,7 @@ if (ClientPrefs.showNPS)
 		#if desktop
 		DiscordClient.changePresence("Chart Editor", null, null, true);
 		#end
+	}
 	}
 
 	public var isDead:Bool = false; //Don't mess with this on Lua!!!
