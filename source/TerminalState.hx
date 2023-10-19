@@ -339,13 +339,13 @@ class TerminalState extends MusicBeatState
 		{
 			expungedTimer.cancel();
 			fakeDisplayGroup.clear();
+			teleport()
 
 			});
-                        FlxG.sound.play(Paths.sound('iTrollYou', 'shared'));function()
+                        FlxG.sound.play(Paths.sound('iTrollYou', 'shared'));function teleport()
 			{
-				new FlxTimer().start(1, function(timer:FlxTimer)
+				new FlxTimer().start(10, function(timer:FlxTimer)
 				{
-					FlxG.save.flush();
 					PlayState.SONG = Song.loadFromJson("noitailihnna");
 					PlayState.SONG.validScore = false;
 					LoadingState.loadAndSwitchState(new PlayState());
