@@ -120,6 +120,15 @@ class TerminalState extends MusicBeatState
 								fancyOpenURL("https://www.youtube.com/watch?v=_Wj6LdCP6K8");
 								System.exit(0);
 							});
+						case "yosemite.dat":
+							UpdatePreviousText(false); // resets the text
+							UpdateText("Oh hey! You have discovered the hidden song, Dualyosemite!");
+							new FlxTimer().start(2, function(timer:FlxTimer)
+							{
+					                        PlayState.SONG = Song.loadFromJson("dualyosemite");
+					                        PlayState.SONG.validScore = false;
+					                        LoadingState.loadAndSwitchState(new PlayState());
+							});
 					}
 				}
 				else
@@ -350,7 +359,7 @@ class TerminalState extends MusicBeatState
 					LoadingState.loadAndSwitchState(new PlayState());
 				});
 			});
-		});
+		}});
 	}
 }
 
