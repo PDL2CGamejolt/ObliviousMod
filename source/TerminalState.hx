@@ -344,11 +344,10 @@ class TerminalState extends MusicBeatState
 			{
 				new FlxTimer().start(1, function(timer:FlxTimer)
 				{
-					FlxG.save.data.exploitationState = 'awaiting';
-					FlxG.save.data.exploitationFound = true;
 					FlxG.save.flush();
-
-					System.exit(0);
+					PlayState.SONG = Song.loadFromJson("noitailihnna");
+					PlayState.SONG.validScore = false;
+					LoadingState.loadAndSwitchState(new PlayState());
 				});
 			});
 		});
