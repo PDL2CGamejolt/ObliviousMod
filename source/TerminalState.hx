@@ -339,7 +339,6 @@ class TerminalState extends MusicBeatState
 		{
 			expungedTimer.cancel();
 			fakeDisplayGroup.clear();
-			sendPlayertothesong();
 
 			});
                         FlxG.sound.play(Paths.sound('iTrollYou', 'shared')); function sendPlayertothesong()
