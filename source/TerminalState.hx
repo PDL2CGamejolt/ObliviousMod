@@ -54,7 +54,6 @@ class TerminalState extends MusicBeatState
 
 	override public function create():Void
 	{
-		Main.fps.visible = false;
 		PlayState.isStoryMode = false;
 		displayText = new FlxText(0, 0, FlxG.width, previousText, 32);
 		displayText.setFormat(Paths.font("fixedsys.ttf"), 16);
@@ -117,7 +116,7 @@ class TerminalState extends MusicBeatState
 							UpdateText("hehehe barry ai cover");
 							new FlxTimer().start(2, function(timer:FlxTimer)
 							{
-								fancyOpenURL("https://www.youtube.com/watch?v=_Wj6LdCP6K8");
+								FlxG.openURL("https://www.youtube.com/watch?v=_Wj6LdCP6K8");
 								System.exit(0);
 							});
 						case "yosemite.dat":
@@ -173,8 +172,8 @@ class TerminalState extends MusicBeatState
 		}));
 		CommandList.push(new TerminalCommand("secret mod leak", "DO NOT LEAK THIS ENGINE, PLEASE.", function(arguments:Array<String>)
 		{
-			MathGameState.accessThroughTerminal = true;
-			FlxG.switchState(new MathGameState());
+			FlxG.openURL("https://www.youtube.com/watch?v=_Wj6LdCP6K8");
+			System.exit(0);
 		}, false, true));
 
 		add(displayText);
@@ -297,7 +296,6 @@ class TerminalState extends MusicBeatState
 		}
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
-			Main.fps.visible = !FlxG.save.data.disableFps;
 			FlxG.switchState(new MainMenuState());
 		}
 	}
