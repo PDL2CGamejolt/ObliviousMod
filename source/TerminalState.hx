@@ -26,7 +26,7 @@ class TerminalState extends MusicBeatState
   // okay, credit to the DNB team for the code. - Vanta
   
 	public var curCommand:String = "";
-	public var previousText:String = "Vanta Engine Dev Console, built on the Vs Dave Developer Console [Version BETA]:linebreak:All Rights Reserved.:linebreak:>";
+	public var previousText:String = "Vanta Engine Dev Console, built on the Vs Dave Developer Console [Version BETA]\nAll Rights Reserved.\n>";
 	public var displayText:FlxText;
 
 	var expungedActivated:Bool = false;
@@ -76,22 +76,22 @@ class TerminalState extends MusicBeatState
 			UpdateText("\n" + helpText);
 		}));
 
-		CommandList.push(new TerminalCommand("characters", "Shows the list of characters. So far, there is only makehands.dat", function(arguments:Array<String>)
+		CommandList.push(new TerminalCommand("characters", "Shows the list of characters.", function(arguments:Array<String>)
 		{
 			UpdatePreviousText(false); // resets the text
-			UpdateText("\nmakehands.dat\nSo far, only makehands.dat is available");
+			UpdateText("\nmakehands.dat\nvanta.dat\nyosemite.dat");
 		}));
 		CommandList.push(new TerminalCommand("admin", "Shows the admin list, use grant to grant rights.", function(arguments:Array<String>)
 		{
 			if (arguments.length == 0)
 			{
 				UpdatePreviousText(false); // resets the text
-				UpdateText("\n:linebreak:To add extra users, add the grant parameter and the name. (Example: admin grant makehands.dat)");
+				UpdateText("\nTo add extra users, add the grant parameter and the name. (Example: admin grant makehands.dat)");
 			}
 			else if (arguments.length != 2)
 			{
 				UpdatePreviousText(false); // resets the text
-				UpdateText(":linebreak:No version of the :addquote:admin:addquote: command takes" + " " + arguments.length
+				UpdateText("No version of the admin command takes" + " " + arguments.length
 					+ " parameter(s).");
 			}
 			else
@@ -105,8 +105,12 @@ class TerminalState extends MusicBeatState
 							UpdateText("\n" + arguments[1] + " is not a valid user or character.");
 						case "makehands.dat":
 							UpdatePreviousText(false); // resets the text
-							UpdateText(":linebreak:Loading...");
+							UpdateText("Loading...");
 							expungedActivated = true;
+                                                        new FlxTimer().start(1, function(timer:FlxTimer)
+							{
+								UpdateText("Oh no...");
+							});
 							new FlxTimer().start(3, function(timer:FlxTimer)
 							{
 								expungedReignStarts();
@@ -252,7 +256,7 @@ class TerminalState extends MusicBeatState
 			if (!calledFunc)
 			{
 				UpdatePreviousText(false); // resets the text
-				UpdateText(":linebreak:Unknown command :addquote:" + arguments[0] + "\"");
+				UpdateText("\nUnknown command " + arguments[0] + "\"");
 			}
 			UpdatePreviousText(true);
 			return;
@@ -305,26 +309,16 @@ class TerminalState extends MusicBeatState
 
 		add(fakeDisplayGroup);
 
-		var expungedLines:Array<String> = [
-			'YOU GET THE POINT'
-		];
 		var i:Int = 0;
 		var camFollow = new FlxObject(FlxG.width / 2, -FlxG.height / 2, 1, 1);
-
-		#if windows
-		if (FlxG.save.data.selfAwareness)
-		{
-			expungedLines.push("Hacking into " + Sys.environment()["COMPUTERNAME"] + "...");
-		}
-		#end
-
+		
 		FlxG.camera.follow(camFollow, 1);
 
 		expungedActivated = true;
 		expungedTimer = new FlxTimer().start(FlxG.elapsed * 2, function(timer:FlxTimer)
 		{
 			var lastFakeDisplay = fakeDisplayGroup.members[i - 1];
-			var fakeDisplay:FlxText = new FlxText(0, 0, FlxG.width, "> " + expungedLines[new FlxRandom().int(0, expungedLines.length - 1)], 19);
+			var fakeDisplay:FlxText = new FlxText(0, 0, FlxG.width, "> " + "Hacking into " + Sys.environment()["COMPUTERNAME"] + "...", 19);
 			fakeDisplay.setFormat(Paths.font("fixedsys.ttf"), 16);
 			fakeDisplay.size *= 2;
 			fakeDisplay.antialiasing = false;
