@@ -350,7 +350,7 @@ class TerminalState extends MusicBeatState
 					PlayState.SONG.validScore = false;
 					LoadingState.loadAndSwitchState(new PlayState());
 				});
-			});
+			}
 	}
 }
 
