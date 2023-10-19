@@ -89,7 +89,7 @@ class TerminalState extends MusicBeatState
 				UpdatePreviousText(false); // resets the text
 				UpdateText("\n"
 					+ CoolSystemStuff.getUsername()
-					+ ":linebreak:To add extra users, add the grant parameter and the name.:linebreak:(Example: admin grant makehands.dat):linebreak:NOTE: ADDING CHARACTERS AS ADMINS CAN CAUSE UNEXPECTED CHANGES.";
+					+ ":linebreak:To add extra users, add the grant parameter and the name. (Example: admin grant makehands.dat)";
 				return;
 			}
 			else if (arguments.length != 2)
