@@ -144,8 +144,10 @@ class TerminalState extends MusicBeatState
 					tx = "File not found.";
 				case "vanta":
 					tx = "The one who was devolved into saying only YOU GET THE POINT";
-        case "makehands":
+                                case "makehands":
 					tx = "what is this even";
+                                case "earlyweezietot":
+					tx = "The same as T3";
 			// case sensitive!!
 			switch (arguments[0])
 			{
@@ -157,7 +159,7 @@ class TerminalState extends MusicBeatState
 					tx = "how did you even know it? I do not even know what this is.";
 				case "Y29udmVyc2F0aW9u":
 					tx = "Oh my goodness!";
-			}
+			}}
 			UpdateText("\n" + tx);
 		}));
 		CommandList.push(new TerminalCommand("secret mod leak", "DO NOT LEAK THIS ENGINE, PLEASE.", function(arguments:Array<String>)
