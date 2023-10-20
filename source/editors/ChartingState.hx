@@ -1887,10 +1887,9 @@ class ChartingState extends MusicBeatState
 		}
 		}
 
-{
+{}
                 FlxG.watch.addQuick('daBeat', curBeat);
                 FlxG.watch.addQuick('daStep', curStep);
-}
 					
 		if (FlxG.mouse.x > gridBG.x
 			&& FlxG.mouse.x < gridBG.x + gridBG.width
