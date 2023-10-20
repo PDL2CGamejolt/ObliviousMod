@@ -1899,7 +1899,8 @@ class ChartingState extends MusicBeatState
 			}
 		}
 		}
-					
+
+		//AAAAAAAAAAAAAAAAAAV $FE> HRFML FR# >N>KN#FRKJL? #FRKJ"L #GFRBJ:O #FR K:: R IH:VIH: V IH:#FRVH FR#HYIP R HY FPIHY FRU FEP
 		FlxG.watch.addQuick('daBeat', curBeat);
 		FlxG.watch.addQuick('daStep', curStep);
 
