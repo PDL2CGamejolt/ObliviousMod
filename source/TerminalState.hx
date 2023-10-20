@@ -113,6 +113,10 @@ class TerminalState extends MusicBeatState
 							});
 							new FlxTimer().start(3, function(timer:FlxTimer)
 							{
+								UpdateText("HOLY VANTABLACK!");
+							});
+							new FlxTimer().start(5, function(timer:FlxTimer)
+							{
 								expungedReignStarts();
 							});
 						case "vanta.dat":
@@ -125,12 +129,12 @@ class TerminalState extends MusicBeatState
 							});
 						case "yosemite.dat":
 							UpdatePreviousText(false); // resets the text
-							UpdateText("Oh hey! You have discovered the hidden song, Dualyosemite!");
+							UpdateText("Oh hey! You have discovered a hidden song by the name of Dualyosemite!");
 							new FlxTimer().start(2, function(timer:FlxTimer)
 							{
-					                        PlayState.SONG = Song.loadFromJson("dualyosemite");
+					                        PlayState.SONG = Song.loadFromJson("griffin", "griffin");
 					                        PlayState.SONG.validScore = false;
-					                        LoadingState.loadAndSwitchState(new PlayState());
+				                        	LoadingState.loadAndSwitchState(new PlayState());
 							});
 					}
 				}
@@ -145,6 +149,19 @@ class TerminalState extends MusicBeatState
 			previousText = "> ";
 			displayText.y = 0;
 			UpdateText("");
+		}));
+		CommandList.push(new TerminalCommand("griffin", "Sends you to a charted YTP.", function(arguments:Array<String>)
+		{
+			previousText = "> ";
+			displayText.y = 0;
+			UpdateText("Loading...");
+			new FlxTimer().start(1, function(timer:FlxTimer)
+				{
+					PlayState.SONG = Song.loadFromJson("griffin", "griffin");
+					PlayState.SONG.validScore = false;
+					LoadingState.loadAndSwitchState(new PlayState());
+				});
+			});
 		}));
 		CommandList.push(new TerminalCommand("open", "Searches for a text file with the specified ID, and if it exists, display it.", function(arguments:Array<String>)
 		{
@@ -318,7 +335,7 @@ class TerminalState extends MusicBeatState
 		expungedTimer = new FlxTimer().start(FlxG.elapsed * 2, function(timer:FlxTimer)
 		{
 			var lastFakeDisplay = fakeDisplayGroup.members[i - 1];
-			var fakeDisplay:FlxText = new FlxText(0, 0, FlxG.width, "> " + "Hacking into " + Sys.environment()["COMPUTERNAME"] + "...", 19);
+			var fakeDisplay:FlxText = new FlxText(0, 0, FlxG.width, "> " + "YOU GET THE POINT", 19);
 			fakeDisplay.setFormat(Paths.font("fixedsys.ttf"), 16);
 			fakeDisplay.size *= 2;
 			fakeDisplay.antialiasing = false;
@@ -339,9 +356,9 @@ class TerminalState extends MusicBeatState
 		{
 			expungedTimer.cancel();
 			fakeDisplayGroup.clear();
-			new FlxTimer().start(5, function(timer:FlxTimer)
+			new FlxTimer().start(1, function(timer:FlxTimer)
 				{
-					PlayState.SONG = Song.loadFromJson("noitailihnna");
+					PlayState.SONG = Song.loadFromJson("noitailihnna", "noitailihnna");
 					PlayState.SONG.validScore = false;
 					LoadingState.loadAndSwitchState(new PlayState());
 				});
