@@ -420,7 +420,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'daMenuMusic',
 			'string',
 			'Mashup',
-			['Mashup', 'Base Game', 'DDTO+', 'Dave & Bambi', 'Dave & Bambi (Old)', 'VS Impostor', 'VS Nonsense V2']);
+			['Mashup', 'Base Game', 'DDTO+', 'Dave & Bambi', 'Dave & Bambi (Old)', 'VS Impostor', 'VS Nonsense V2', 'Vanta', 'Vanta Old', 'Vanta Older', 'Vanta Oldest', 'Vanta Scrapped']);
 		addOption(option);
 		option.onChange = onChangeMenuMusic;
 		
