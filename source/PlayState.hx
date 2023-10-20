@@ -1891,6 +1891,10 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.bfIconStyle == 'Doki Doki+') iconP1.changeIcon('bfdoki'); 
 		if (ClientPrefs.bfIconStyle == 'Leather Engine') iconP1.changeIcon('bfleather'); 
 
+		if (ClientPrefs.hideHud)
+			watermarkTxt.visible = screwYouTxt.visible = false;	
+		}
+
 		if (ClientPrefs.hudType == 'Kade Engine') {
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
@@ -1898,7 +1902,14 @@ class PlayState extends MusicBeatState
 		EngineWatermark.scrollFactor.set();
 		add(EngineWatermark);
 		EngineWatermark.text = SONG.song + " " + CoolUtil.difficultyString() + " | VE " + MainMenuState.psychEngineJSVersion;
-		}
+		screwYouTxt = new FlxText(10, FlxG.height * 1 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
+
 		if (ClientPrefs.hudType == 'JS Engine') {
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.1 - 70,0,"", 18);
@@ -1907,6 +1918,14 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.downScroll) EngineWatermark.y = (FlxG.height * 0.9 + 50);
 		add(EngineWatermark);
 		EngineWatermark.text = "You are playing " + SONG.song + " on " + CoolUtil.difficultyString() + "! (VE v" + MainMenuState.psychEngineJSVersion + ")";
+		screwYouTxt = new FlxText(10, FlxG.height * 0.1 - 45, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		if (ClientPrefs.downScroll) screwYouTxt.y = (FlxG.height * 0.9 + 35);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		if (ClientPrefs.hudType == 'Dave and Bambi') {
 		// Add Engine watermark
@@ -1915,41 +1934,97 @@ class PlayState extends MusicBeatState
 		EngineWatermark.scrollFactor.set();
 		add(EngineWatermark);
 		EngineWatermark.text = SONG.song;
+		screwYouTxt = new FlxText(10, FlxG.height * 1 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		if (ClientPrefs.hudType == 'Doki Doki+') {
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		if (ClientPrefs.hudType == 'Leather Engine') {
 		// Add Engine watermark BECAUSE THE ENGINE THING IS dumb
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		if (ClientPrefs.hudType == 'VS Impostor') { //unfortunately i have to do this because otherwise enginewatermark calls a null object reference
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		if (ClientPrefs.hudType == 'Psych Engine') { //unfortunately i have to do this because otherwise enginewatermark calls a null object reference
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		if (ClientPrefs.hudType == 'Tails Gets Trolled V4') { //unfortunately i have to do this because otherwise enginewatermark calls a null object reference
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("calibri.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		if (ClientPrefs.hudType == "Mic'd Up") { //unfortunately i have to do this because otherwise enginewatermark calls a null object reference
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		if (ClientPrefs.hudType == 'Box Funkin') { //unfortunately i have to do this because otherwise enginewatermark calls a null object reference
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt.scrollFactor.set();
+		screwYouTxt.setFormat(Paths.font("MilkyNice.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		screwYouTxt.size = 18;
+		screwYouTxt.updateHitbox();
+		screwYouTxt.alpha = 0.8;
+		add(screwYouTxt);
 		}
 		
 		if (ClientPrefs.hudType == 'Kade Engine')
