@@ -1900,7 +1900,8 @@ class ChartingState extends MusicBeatState
 		}
 
 		{
-                FlxG.watch.addQuick('daBeat', curBeat);
+                FlxG.watch.addQuick('daBeat', curBeat);}
+		{	
                 FlxG.watch.addQuick('daStep', curStep);
 		}
 					
