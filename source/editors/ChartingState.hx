@@ -1885,8 +1885,7 @@ class ChartingState extends MusicBeatState
 				changeSection(curSec - 1, false);
 			}
 		}
-		}
-}
+	}
 					
 		if (FlxG.mouse.x > gridBG.x
 			&& FlxG.mouse.x < gridBG.x + gridBG.width
