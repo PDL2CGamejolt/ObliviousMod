@@ -98,8 +98,6 @@ class FPS extends TextField
 			{
 				text += "\nMemory: " + memoryMegas + " MB";
 			}
-			text += "\nVanta Engine";
-			text += "\na modified JSE v1.10.0";
 
 			textColor = 0xFFFFFFFF;
 			if (currentFPS <= ClientPrefs.framerate / 2)
