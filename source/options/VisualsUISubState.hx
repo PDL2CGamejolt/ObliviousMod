@@ -410,8 +410,8 @@ class VisualsUISubState extends BaseOptionsMenu
 			"What song do you prefer for the Pause Screen?",
 			'pauseMusic',
 			'string',
-			'Tea Time',
-			['None', 'Breakfast', 'Tea Time']);
+			'Payten Edition',
+			['None', 'Breakfast', 'Tea Time', 'Payten Edition', 'Trainwreck', 'TCC']);
 		addOption(option);
 		option.onChange = onChangePauseMusic;
 				
@@ -419,7 +419,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			"What song do you prefer when you're in menus?",
 			'daMenuMusic',
 			'string',
-			'Mashup',
+			'Vanta',
 			['Mashup', 'Base Game', 'DDTO+', 'Dave & Bambi', 'Dave & Bambi (Old)', 'VS Impostor', 'VS Nonsense V2', 'Vanta', 'Vanta Old', 'Vanta Older', 'Vanta Oldest', 'Vanta Scrapped', 'Vanta Funny']);
 		addOption(option);
 		option.onChange = onChangeMenuMusic;
