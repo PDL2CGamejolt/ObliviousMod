@@ -1896,7 +1896,6 @@ class PlayState extends MusicBeatState
 		}
 
 		if (ClientPrefs.hudType == 'Kade Engine') {
-		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		EngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		EngineWatermark.scrollFactor.set();
@@ -1909,6 +1908,7 @@ class PlayState extends MusicBeatState
 		screwYouTxt.updateHitbox();
 		screwYouTxt.alpha = 0.8;
 		add(screwYouTxt);
+		}
 
 		if (ClientPrefs.hudType == 'JS Engine') {
 		// Add Engine watermark
