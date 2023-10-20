@@ -61,6 +61,7 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 
+
 @:access(flixel.sound.FlxSound._sound)
 @:access(openfl.media.Sound.__buffer)
 
@@ -84,6 +85,7 @@ class ChartingState extends MusicBeatState
 	[
 		['', "Nothing. Yep, that's right."],
 		['Nothing', "Nothing 2: Electric Boogaloo"],
+		['AAAAAAAAAAAAAAAAAAA', "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
 		['Dadbattle Spotlight', "Used in Dad Battle,\nValue 1: 0/1 = ON/OFF,\n2 = Target Dad\n3 = Target BF"],
 		['Hey!', "Plays the \"Hey!\" animation from Bopeebo,\nValue 1: BF = Only Boyfriend, GF = Only Girlfriend,\nSomething else = Both.\nValue 2: Custom animation duration,\nleave it blank for 0.6s"],
 		['Set GF Speed', "Sets GF head bopping speed,\nValue 1: 1 = Normal speed,\n2 = 1/2 speed, 4 = 1/4 speed etc.\nUsed on Fresh during the beatbox parts.\n\nWarning: Value must be integer!"],
@@ -95,6 +97,8 @@ class ChartingState extends MusicBeatState
 		['Play Animation', "Plays an animation on a Character,\nonce the animation is completed,\nthe animation changes to Idle\n\nValue 1: Animation to play.\nValue 2: Character (Dad, BF, GF)"],
 		['Camera Follow Pos', "Value 1: X\nValue 2: Y\n\nThe camera won't change the follow point\nafter using this, for getting it back\nto normal, leave both values blank."],
 		['Alt Idle Animation', "Sets a specified suffix after the idle animation name.\nYou can use this to trigger 'idle-alt' if you set\nValue 2 to -alt\n\nValue 1: Character to set (Dad, BF or GF)\nValue 2: New suffix (Leave it blank to disable)"],
+		['Enable Camera Bop', "Enables camera bopping. Useful if you don't want the\nopponent to hit a note, but you want camera bouncing."],
+		['Disable Camera Bop', "Same thing as 'Enable Camera Bopping', but disables it\ninstead."],
 		['Screen Shake', "Value 1: Camera shake\nValue 2: HUD shake\n\nEvery value works as the following example: \"1, 0.05\".\nThe first number (1) is the duration.\nThe second number (0.05) is the intensity."],
 		['Camera Bopping', "Makes the camera do funny bopping\n\nValue 1: Bopping Speed (how many beats you want before it bops)\nValue 2: Bopping Intensity (how hard you want it to bop, default is 1)\n\nTo reset camera bopping, place a new event and put both values as '4' and '1' respectively."],
 		['Change Note Multiplier', "Changes the amount of notes played every time you hit a note.\n\nValue 1: Note Multiplier that you want."],
@@ -239,19 +243,19 @@ class ChartingState extends MusicBeatState
 			CoolUtil.difficulties = CoolUtil.defaultDifficulties.copy();
 
 			_song = {
-				song: 'Tutorial',
+				song: 'Test',
 				notes: [],
 				events: [],
-				bpm: 100.0,
+				bpm: 150.0,
 				needsVoices: true,
 				arrowSkin: '',
 				splashSkin: 'noteSplashes',//idk it would crash if i didn't
 				player1: 'bf',
-				player2: 'gf',
+				player2: 'dad',
 				gfVersion: 'gf',
+				songCredit: '',
 				speed: 1,
 				stage: 'stage',
-				screwYou: '',
 				validScore: false,
 			};
 			addSection();
@@ -264,7 +268,7 @@ class ChartingState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));
+		DiscordClient.changePresence("Chart Editor - Charting " + StringTools.replace(_song.song, '-', ' '), '${FlxStringUtil.formatMoney(CoolUtil.getNoteAmount(_song), false)} Notes');
 		#end
 
 		vortex = FlxG.save.data.chart_vortex;
@@ -391,6 +395,7 @@ class ChartingState extends MusicBeatState
 			{name: "Note", label: 'Note'},
 			{name: "Events", label: 'Events'},
 			{name: "Charting", label: 'Charting'},
+			{name: "Data", label: 'Data'},
 			{name: "Note Spamming", label: 'Note Spamming'},
 		];
 
@@ -414,7 +419,8 @@ class ChartingState extends MusicBeatState
 		\nHold Alt and click on a note to change it to the selected note type
 		\nHold CTRL and use the Mouse Wheel to decrease/increase the note's sustain length
 		\nZ/X - Zoom in/out
-		\nC - Draw your charts!
+		\nC - Draw your charts! Easier charting for your Bambi fansongs lmao
+		\n
 		\n(Hold) CTRL + Left/Right - Shift the currently selected note
 		\nEsc - Test your chart inside Chart Editor
 		\nEnter - Play your chart
@@ -446,6 +452,7 @@ class ChartingState extends MusicBeatState
 		addEventsUI();
 		addChartingUI();
 		addNoteStackingUI();
+		addSongDataUI();
 		updateHeads();
 		updateWaveform();
 		//UI_box.selected_tab = 4;
@@ -520,7 +527,6 @@ class ChartingState extends MusicBeatState
 	var playSoundBf:FlxUICheckBox = null;
 	var playSoundDad:FlxUICheckBox = null;
 	var UI_songTitle:FlxUIInputText;
-	var screwYouInputText:FlxUIInputText;
 	var noteSkinInputText:FlxUIInputText;
 	var noteSplashesInputText:FlxUIInputText;
 	var stageDropDown:FlxUIDropDownMenuCustom;
@@ -609,12 +615,12 @@ class ChartingState extends MusicBeatState
 		clear_notes.color = FlxColor.RED;
 		clear_notes.label.color = FlxColor.WHITE;
 
-		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 9999999999, 3);
+		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 0, 999999, 3);
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 		blockPressWhileTypingOnStepper.push(stepperBPM);
 
-		var stepperSpeed:FlxUINumericStepper = new FlxUINumericStepper(10, stepperBPM.y + 35, 0.1, 1, 0.1, 9999999999, 1);
+		var stepperSpeed:FlxUINumericStepper = new FlxUINumericStepper(10, stepperBPM.y + 35, 0.1, 1, -999999, 999999, 1);
 		stepperSpeed.value = _song.speed;
 		stepperSpeed.name = 'song_speed';
 		blockPressWhileTypingOnStepper.push(stepperSpeed);
@@ -719,9 +725,6 @@ class ChartingState extends MusicBeatState
 		stageDropDown.selectedLabel = _song.stage;
 		blockPressWhileScrolling.push(stageDropDown);
 
-		screwYouInputText = new FlxUIInputText(creditInputText.x + 140, creditInputText.y, 125, _song.screwYou, 8);
-		blockPressWhileTypingOn.push(screwYouInputText);
-
 		var skin = PlayState.SONG.arrowSkin;
 		if(skin == null) skin = '';
 		noteSkinInputText = new FlxUIInputText(player2DropDown.x, player2DropDown.y + 50, 150, skin, 8);
@@ -751,18 +754,16 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(loadEventJson);
 		tab_group_song.add(stepperBPM);
 		tab_group_song.add(stepperSpeed);
-		tab_group_song.add(screwYouInputText);
 		tab_group_song.add(reloadNotesButton);
 		tab_group_song.add(noteSkinInputText);
 		tab_group_song.add(noteSplashesInputText);
-		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 15, 0, 'Song BPM:'));
-		tab_group_song.add(new FlxText(stepperBPM.x + 100, stepperBPM.y - 15, 0, 'Song Offset:'));
-		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 15, 0, 'Song Speed:'));
+		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 15, 0, 'BPM:'));
+		tab_group_song.add(new FlxText(stepperBPM.x + 100, stepperBPM.y - 15, 0, 'Offset:'));
+		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 15, 0, 'Scroll Speed:'));
 		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 15, 0, 'Opponent:'));
 		tab_group_song.add(new FlxText(gfVersionDropDown.x, gfVersionDropDown.y - 15, 0, 'Girlfriend:'));
 		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
 		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:'));
-		tab_group_song.add(new FlxText(screwYouInputText.x, screwYouInputText.y - 15, 0, 'Screw You Text:'));
 		tab_group_song.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Texture:'));
 		tab_group_song.add(new FlxText(noteSplashesInputText.x, noteSplashesInputText.y - 15, 0, 'Note Splashes Texture:'));
 		tab_group_song.add(player2DropDown);
@@ -773,6 +774,21 @@ class ChartingState extends MusicBeatState
 		UI_box.addGroup(tab_group_song);
 
 		FlxG.camera.follow(camPos);
+	}
+
+	var creditInputText:FlxUIInputText;
+	function addSongDataUI():Void //therell be more added here later
+	{
+		var tab_group_songdata = new FlxUI(null, UI_box);
+		tab_group_songdata.name = "Data";
+
+		creditInputText = new FlxUIInputText(10, 30, 100, _song.songCredit, 8);
+		blockPressWhileTypingOn.push(creditInputText);
+
+		tab_group_songdata.add(creditInputText);
+		tab_group_songdata.add(new FlxText(creditInputText.x, creditInputText.y - 15, 0, 'Song Credit:'));
+
+		UI_box.addGroup(tab_group_songdata);
 	}
 
 	var stepperBeats:FlxUINumericStepper;
@@ -790,17 +806,17 @@ class ChartingState extends MusicBeatState
 		var tab_group_section = new FlxUI(null, UI_box);
 		tab_group_section.name = 'Section';
 
-		check_mustHitSection = new FlxUICheckBox(10, 15, null, null, "Must hit section", 100);
+		check_mustHitSection = new FlxUICheckBox(10, 15, null, null, "Must Hit Section", 100);
 		check_mustHitSection.name = 'check_mustHit';
-		check_mustHitSection.checked = _song.notes[curSec].mustHitSection;
+		check_mustHitSection.checked = (_song.notes[curSec] != null ? _song.notes[curSec].mustHitSection : true);
 
 		check_gfSection = new FlxUICheckBox(10, check_mustHitSection.y + 22, null, null, "GF section", 100);
 		check_gfSection.name = 'check_gf';
-		check_gfSection.checked = _song.notes[curSec].gfSection;
+		check_gfSection.checked = (_song.notes[curSec] != null ? _song.notes[curSec].gfSection : false);
 		// _song.needsVoices = check_mustHit.checked;
 
 		check_altAnim = new FlxUICheckBox(check_gfSection.x + 120, check_gfSection.y, null, null, "Alt Animation", 100);
-		check_altAnim.checked = _song.notes[curSec].altAnim;
+		check_altAnim.checked = (_song.notes[curSec] != null ? _song.notes[curSec].altAnim : false);
 
 		stepperBeats = new FlxUINumericStepper(10, 100, 1, 4, 1, 8192, 2); //idk why youd need 8k beats in a single section but ok i guess??
 		stepperBeats.value = getSectionBeats();
@@ -809,7 +825,7 @@ class ChartingState extends MusicBeatState
 		check_altAnim.name = 'check_altAnim';
 
 		check_changeBPM = new FlxUICheckBox(10, stepperBeats.y + 30, null, null, 'Change BPM', 100);
-		check_changeBPM.checked = _song.notes[curSec].changeBPM;
+		check_changeBPM.checked = (_song.notes[curSec] != null ? _song.notes[curSec].changeBPM : false);
 		check_changeBPM.name = 'check_changeBPM';
 
 		stepperSectionBPM = new FlxUINumericStepper(10, check_changeBPM.y + 20, 1, Conductor.bpm, 0, 999999, 1);
@@ -1071,7 +1087,7 @@ class ChartingState extends MusicBeatState
 			changeSection(value);
 		});
 
-		var CopyNextSectionCount:FlxUINumericStepper = new FlxUINumericStepper(jumpSection.x, jumpSection.y + 60, 1, 1, -999, 999, 0);
+		var CopyNextSectionCount:FlxUINumericStepper = new FlxUINumericStepper(jumpSection.x, jumpSection.y + 60, 1, 1, -16384, 16384, 0);
 		blockPressWhileTypingOnStepper.push(CopyNextSectionCount);
 
 		var copyNextButton:FlxButton = new FlxButton(CopyNextSectionCount.x, CopyNextSectionCount.y + 20, "Copy to the next..", function()
@@ -1260,7 +1276,7 @@ class ChartingState extends MusicBeatState
 		stepperStackNum.name = 'stack_count';
 		blockPressWhileTypingOnStepper.push(stepperStackNum);
 
-		stepperStackOffset = new FlxUINumericStepper(10, 50, 1, 1, 0, 8192);
+		stepperStackOffset = new FlxUINumericStepper(10, 50, 1, 1, 0, 2097152);
 		stepperStackOffset.name = 'stack_offset';
 		blockPressWhileTypingOnStepper.push(stepperStackOffset);
 
@@ -1811,9 +1827,6 @@ class ChartingState extends MusicBeatState
 					updateGrid();
 				}
 			}
-			if(sender == screwYouInputText) {
-				_song.screwYou = screwYouInputText.text;
-			}
 		}
 		else if (id == FlxUISlider.CHANGE_EVENT && (sender is FlxUISlider))
 		{
@@ -1887,12 +1900,51 @@ class ChartingState extends MusicBeatState
 				changeSection(curSec - 1, false);
 			}
 		}
-	}
-					
 		FlxG.watch.addQuick('daBeat', curBeat);
 		FlxG.watch.addQuick('daStep', curStep);
 
-		if (FlxG.mouse.x > gridBG.x && FlxG.mouse.x < gridBG.x + gridBG.width && FlxG.mouse.y > gridBG.y && FlxG.mouse.y < gridBG.y + (GRID_SIZE * getSectionBeats() * 4) * zoomList[curZoom])
+		#if android
+		for (touch in FlxG.touches.list) {
+			if (touch.x > gridBG.x
+				&& touch.x < gridBG.x + gridBG.width
+				&& touch.y > gridBG.y
+				&& FlxG.mouse.y < gridBG.y + (GRID_SIZE * getSectionBeats() * 4) * zoomList[curZoom]) {
+				dummyArrow.visible = true;
+				dummyArrow.x = Math.floor(FlxG.mouse.x / GRID_SIZE) * GRID_SIZE;
+				if (virtualPad.buttonY.pressed)
+					dummyArrow.y = touch.y;
+				else {
+					var gridmult = GRID_SIZE / (quantization / 16);
+					dummyArrow.y = Math.floor(touch.y / gridmult) * gridmult;
+				}
+			} else {
+				dummyArrow.visible = false;
+			}
+
+			if (touch.justReleased) {
+				if (touch.overlaps(curRenderedNotes)) {
+					curRenderedNotes.forEachAlive(function(note:Note) {
+						if (touch.overlaps(note)) {
+							// trace('tryin to delete note...');
+							deleteNote(note);
+						}
+					});
+				} else {
+					if (touch.x > gridBG.x
+						&& touch.x < gridBG.x + gridBG.width
+						&& touch.y > gridBG.y
+						&& touch.y < gridBG.y + (GRID_SIZE * getSectionBeats() * 4) * zoomList[curZoom]) {
+						FlxG.log.add('added note');
+						addNote();
+					}
+				}
+			}
+		}
+		#else
+		if (FlxG.mouse.x > gridBG.x
+			&& FlxG.mouse.x < gridBG.x + gridBG.width
+			&& FlxG.mouse.y > gridBG.y
+			&& FlxG.mouse.y < gridBG.y + (GRID_SIZE * getSectionBeats() * 4) * zoomList[curZoom])
 		{
 			dummyArrow.visible = true;
 			dummyArrow.x = Math.floor(FlxG.mouse.x / GRID_SIZE) * GRID_SIZE;
@@ -1906,7 +1958,7 @@ class ChartingState extends MusicBeatState
 		} else {
 			dummyArrow.visible = false;
 		}
-		
+
 		if (FlxG.mouse.justPressed)
 		{
 			if (FlxG.mouse.overlaps(curRenderedNotes))
@@ -1956,6 +2008,7 @@ class ChartingState extends MusicBeatState
 				}
 			}
 		}
+		#end
 
 		var blockInput:Bool = false;
 		for (inputText in blockPressWhileTypingOn) {
@@ -2325,8 +2378,14 @@ class ChartingState extends MusicBeatState
 			if (FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonY.pressed #end)
 				shiftThing = 4;
 
-			if (FlxG.keys.justPressed.D #if android || virtualPad.buttonRight.justPressed #end)
+			if (FlxG.keys.justPressed.D #if android || virtualPad.buttonRight.justPressed #end) {
+				if (_song.notes[curSec + shiftThing] == null)
+				{
+					addSection(getSectionBeats());
+				}
+
 				changeSection(curSec + shiftThing);
+				}
 			if (FlxG.keys.justPressed.A #if android || virtualPad.buttonLeft.justPressed #end) {
 				if(curSec <= 0) {
 					changeSection(_song.notes.length-1);
@@ -2391,7 +2450,8 @@ class ChartingState extends MusicBeatState
 		"\nSection: " + curSec +
 		"\n\nBeat: " + Std.string(curDecBeat).substring(0,4) +
 		"\n\nStep: " + curStep +
-		"\n\nBeat Snap: " + quantization + "th";
+		"\n\nBeat Snap: " + quantization + "th" + 
+		"\n\n" + FlxStringUtil.formatMoney(CoolUtil.getNoteAmount(_song), false) + ' Notes';
 
 		var playedSound:Array<Bool> = [false, false, false, false]; //Prevents ouchy GF sex sounds
 		curRenderedNotes.forEachAlive(function(note:Note) {
@@ -2887,7 +2947,7 @@ class ChartingState extends MusicBeatState
 	{
 		var healthIconP1:String = loadHealthIconFromCharacter(_song.player1);
 		var healthIconP2:String = loadHealthIconFromCharacter(_song.player2);
-
+		if (_song.notes[curSec] != null) {
 		if (_song.notes[curSec].mustHitSection)
 		{
 			leftIcon.changeIcon(healthIconP1);
@@ -2899,6 +2959,7 @@ class ChartingState extends MusicBeatState
 			leftIcon.changeIcon(healthIconP2);
 			rightIcon.changeIcon(healthIconP1);
 			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf');
+		}
 		}
 	}
 
@@ -2984,6 +3045,8 @@ class ChartingState extends MusicBeatState
 			nextRenderedSustains.clear();
 			}
 
+		if (_song.notes[curSec] != null)
+		{
 		if (_song.notes[curSec].changeBPM && _song.notes[curSec].bpm > 0)
 		{
 			Conductor.changeBPM(_song.notes[curSec].bpm);
@@ -3078,6 +3141,11 @@ class ChartingState extends MusicBeatState
 				nextRenderedNotes.add(note);
 			}
 		}
+		}
+		#if desktop
+		// Updating Discord Rich Presence (for updating Note Count)
+		DiscordClient.changePresence("Chart Editor - Charting " + StringTools.replace(_song.song, '-', ' '), '${FlxStringUtil.formatMoney(CoolUtil.getNoteAmount(_song), false)} Notes');
+		#end
 	}
 
 	function setupNoteData(i:Array<Dynamic>, isNextSection:Bool):Note
@@ -3173,10 +3241,10 @@ class ChartingState extends MusicBeatState
 	private function addSection(sectionBeats:Float = 4):Void
 	{
 		var sec:SwagSection = {
-			sectionBeats: getSectionBeats(),
+			sectionBeats: (_song.notes[curSec] != null ? getSectionBeats() : sectionBeats),
 			bpm: _song.bpm,
 			changeBPM: false,
-			mustHitSection: true,
+			mustHitSection: (_song.notes[curSec] != null ? _song.notes[curSec].mustHitSection : true),
 			gfSection: false,
 			sectionNotes: [],
 			typeOfSection: 0,
