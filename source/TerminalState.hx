@@ -339,17 +339,14 @@ class TerminalState extends MusicBeatState
 		{
 			expungedTimer.cancel();
 			fakeDisplayGroup.clear();
-
-			});
-                        FlxG.sound.play(Paths.sound('iTrollYou', 'shared')); function sendPlayertothesong()
-			{
-				new FlxTimer().start(10, function(timer:FlxTimer)
+			new FlxTimer().start(5, function(timer:FlxTimer)
 				{
 					PlayState.SONG = Song.loadFromJson("noitailihnna");
 					PlayState.SONG.validScore = false;
 					LoadingState.loadAndSwitchState(new PlayState());
 				});
-			}
+			});
+                        FlxG.sound.play(Paths.sound('iTrollYou', 'shared'));
 	}
 }
 
