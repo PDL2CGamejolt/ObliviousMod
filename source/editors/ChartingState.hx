@@ -1894,8 +1894,8 @@ class ChartingState extends MusicBeatState
 				{
 					addSection(getSectionBeats());
 				}
-
-				changeSection(curSec + 1, false);} 
+				changeSection(curSec + 1, false);
+			}
 			else if(strumLine.y < -10) {
 				changeSection(curSec - 1, false);
 			}
