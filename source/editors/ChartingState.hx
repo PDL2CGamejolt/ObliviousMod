@@ -544,7 +544,7 @@ class ChartingState extends MusicBeatState
 
 		//if(_song.ghostTappingAllowed == null) _song.ghostTappingAllowed = true;
 
-		var ghostTappingAllowed = new FlxUICheckBox(check_voices.x, 45, null, null, "Ghost Tap"}), 100);
+		var ghostTappingAllowed = new FlxUICheckBox(check_voices.x, 45, null, null, "Ghost Tap"), 100);
 		ghostTappingAllowed.checked = _song.ghostTappingAllowed;
 		ghostTappingAllowed.callback = function()
 		{
