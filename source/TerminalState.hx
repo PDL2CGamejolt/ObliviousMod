@@ -162,7 +162,7 @@ class TerminalState extends MusicBeatState
 					LoadingState.loadAndSwitchState(new PlayState());
 				});
 			}
-		}));
+		}
 		CommandList.push(new TerminalCommand("open", "Searches for a text file with the specified ID, and if it exists, display it.", function(arguments:Array<String>)
 		{
 			UpdatePreviousText(false); // resets the text
