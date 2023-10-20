@@ -252,7 +252,6 @@ class ChartingState extends MusicBeatState
 				speed: 1,
 				stage: 'stage',
 				screwYou: '',
-				ghostTappingAllowed: true,
 				validScore: false,
 			};
 			addSection();
@@ -541,16 +540,6 @@ class ChartingState extends MusicBeatState
 			//trace('CHECKED!');
 		};
 
-		//if(_song.ghostTappingAllowed == null) _song.ghostTappingAllowed = true;
-
-		var ghostTappingAllowed = new FlxUICheckBox(10, 45, null, null, "Ghost Tap", 100);
-		ghostTappingAllowed.checked = _song.ghostTappingAllowed;
-		ghostTappingAllowed.callback = function()
-		{
-			_song.ghostTappingAllowed = ghostTappingAllowed.checked;
-			addTextToDebug("ghost tapping: " + ghostTappingAllowed.checked);
-		};
-
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
 		{
 			saveLevel();
@@ -751,7 +740,6 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(UI_songTitle);
 
 		tab_group_song.add(check_voices);
-		tab_group_song.add(ghostTappingAllowed);
 		tab_group_song.add(clear_events);
 		tab_group_song.add(clear_notes);
 		tab_group_song.add(saveButton);
