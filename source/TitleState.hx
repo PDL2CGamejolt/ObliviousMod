@@ -278,6 +278,12 @@ class TitleState extends MusicBeatState
 			Conductor.changeBPM(150);
 		case 'DDTO+':
 			Conductor.changeBPM(120);
+		case 'Vanta' | 'Vanta Old': 
+			Conductor.changeBPM(195);
+		case 'Vanta Older' | 'Vanta Oldest' | 'Vanta Scrapped': 
+			Conductor.changeBPM(55);
+		case 'Vanta Funny': 
+			Conductor.changeBPM(228.93);
 		}
 		persistentUpdate = true;
 
