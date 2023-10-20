@@ -1896,8 +1896,10 @@ class ChartingState extends MusicBeatState
 				changeSection(curSec + 1, false);
 			} else if(strumLine.y < -10) {
 				changeSection(curSec - 1, false);
-			}}
+			}
 		}
+		}
+					
 		FlxG.watch.addQuick('daBeat', curBeat);
 		FlxG.watch.addQuick('daStep', curStep);
 
