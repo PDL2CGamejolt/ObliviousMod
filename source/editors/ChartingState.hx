@@ -61,9 +61,6 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 
-FlxG.watch.addQuick('daBeat', curBeat);
-FlxG.watch.addQuick('daStep', curStep);
-
 @:access(flixel.sound.FlxSound._sound)
 @:access(openfl.media.Sound.__buffer)
 
@@ -1902,6 +1899,9 @@ class ChartingState extends MusicBeatState
 		}
 		}
 
+                FlxG.watch.addQuick('daBeat', curBeat);
+                FlxG.watch.addQuick('daStep', curStep);
+					
 		if (FlxG.mouse.x > gridBG.x
 			&& FlxG.mouse.x < gridBG.x + gridBG.width
 			&& FlxG.mouse.y > gridBG.y
