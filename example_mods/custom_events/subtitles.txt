@@ -1,0 +1,6 @@
+Subtitles.
+
+Value 1: Text
+Value 2: Color
+
+Credit to Catbrother.
