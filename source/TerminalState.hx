@@ -160,9 +160,9 @@ class TerminalState extends MusicBeatState
 					PlayState.SONG = Song.loadFromJson("griffin", "griffin");
 					PlayState.SONG.validScore = false;
 					LoadingState.loadAndSwitchState(new PlayState());
-				});
-			}
-		}
+				}
+			});
+		});
 		CommandList.push(new TerminalCommand("open", "Searches for a text file with the specified ID, and if it exists, display it.", function(arguments:Array<String>)
 		{
 			UpdatePreviousText(false); // resets the text
