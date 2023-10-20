@@ -1826,7 +1826,7 @@ class ChartingState extends MusicBeatState
 			}
 			if(sender == screwYouInputText) {
 				_song.screwYou = screwYouInputText.text;
-			]
+			}
 		}
 		else if (id == FlxUISlider.CHANGE_EVENT && (sender is FlxUISlider))
 		{
