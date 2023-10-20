@@ -1901,7 +1901,7 @@ class PlayState extends MusicBeatState
 		EngineWatermark.scrollFactor.set();
 		add(EngineWatermark);
 		EngineWatermark.text = SONG.song + " " + CoolUtil.difficultyString() + " | VE " + MainMenuState.psychEngineJSVersion;
-		screwYouTxt = new FlxText(10, FlxG.height * 1 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 1 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
@@ -1918,7 +1918,7 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.downScroll) EngineWatermark.y = (FlxG.height * 0.9 + 50);
 		add(EngineWatermark);
 		EngineWatermark.text = "You are playing " + SONG.song + " on " + CoolUtil.difficultyString() + "! (VE v" + MainMenuState.psychEngineJSVersion + ")";
-		screwYouTxt = new FlxText(10, FlxG.height * 0.1 - 45, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.1 - 45, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		if (ClientPrefs.downScroll) screwYouTxt.y = (FlxG.height * 0.9 + 35);
@@ -1934,7 +1934,7 @@ class PlayState extends MusicBeatState
 		EngineWatermark.scrollFactor.set();
 		add(EngineWatermark);
 		EngineWatermark.text = SONG.song;
-		screwYouTxt = new FlxText(10, FlxG.height * 1 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 1 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
@@ -1946,7 +1946,7 @@ class PlayState extends MusicBeatState
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
-		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
@@ -1958,7 +1958,7 @@ class PlayState extends MusicBeatState
 		// Add Engine watermark BECAUSE THE ENGINE THING IS dumb
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
-		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
@@ -1970,7 +1970,7 @@ class PlayState extends MusicBeatState
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
-		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
@@ -1982,7 +1982,7 @@ class PlayState extends MusicBeatState
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
-		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
@@ -1994,7 +1994,7 @@ class PlayState extends MusicBeatState
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
-		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("calibri.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
@@ -2006,7 +2006,7 @@ class PlayState extends MusicBeatState
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
-		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
@@ -2018,7 +2018,7 @@ class PlayState extends MusicBeatState
 		// Add Engine watermark
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		add(EngineWatermark);
-		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, SONG.screwYou, 74);
+		screwYouTxt = new FlxText(10, FlxG.height * 0.9 + 50, 0, "", 74);
 		screwYouTxt.scrollFactor.set();
 		screwYouTxt.setFormat(Paths.font("MilkyNice.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		screwYouTxt.size = 18;
