@@ -1891,10 +1891,6 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.bfIconStyle == 'Doki Doki+') iconP1.changeIcon('bfdoki'); 
 		if (ClientPrefs.bfIconStyle == 'Leather Engine') iconP1.changeIcon('bfleather'); 
 
-		if (ClientPrefs.hideHud)
-			watermarkTxt.visible = screwYouTxt.visible = false;	
-		}
-
 		if (ClientPrefs.hudType == 'Kade Engine') {
 		EngineWatermark = new FlxText(4,FlxG.height * 0.9 + 50,0,"", 16);
 		EngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
