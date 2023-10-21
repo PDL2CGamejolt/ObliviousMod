@@ -1,0 +1,5 @@
+value 1:
+time it takes to flip
+
+value 2:
+nothin
