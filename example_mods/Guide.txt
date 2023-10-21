@@ -1,0 +1,61 @@
+So youre probably wondering how you do cool shit with this
+
+In Scripts:
+First thing you need to do is load the script, use the event or copy this into the script: 
+function onCreate()
+    addLuaScript('SimpleModchartTemplate')
+end
+
+Make sure you actually have the template in your mods folder lol
+
+
+look at the modifier List text file, basically when the modchart template is loaded, it creates lua sprites with the same names as
+the modifiers, and all you need to do is tween/change the position of them, none of the sprites are loaded btw, dont worry about that
+note that the z pos is over the angle, so to tween the z pos, use doTweenAngle()
+
+
+
+tween examples: 
+doTweenY('rev', 'reverse', 1, stepCrochet/1000, 'quantInOut')	flips scroll
+
+setProperty('scale.x', 2)					scale up and tween back down
+doTweenX('scalex', 'scale', 0.7, stepCrochet/500, 'cubeInOut')
+
+setProperty('drunk.x', 0.5)					set drunk with no tween
+setProperty('drunkSpeed.x', 250)
+
+setProperty('drunk.angle', 4)					set drunk z and tween back down
+setProperty('drunkSpeed.angle', 6)
+doTweenAngle('t', 'drunk', 0, stepCrochet/250, 'quantInOut')
+
+setProperty('confusion', 360)					note spin
+doTweenAngle('confusion', 'confusion', 0, stepCrochet/500, 'cubeInOut')
+
+
+use stepHit or something to put these in
+btw if youre wondering what stepCrochet is, its the time between steps, stepCrochet/1000 = time between steps in seconds
+its used for making stuff on beat and whatever
+
+check the guns script for more in depth modchart
+
+
+In Events:
+First thing is to use the event to load the script, you can place it anywhere doesnt have to be at the start
+
+This is simlar to the script explaination, the modifier list text file tells you which ones are available
+
+examples:
+
+event =   "easeModifierY"	flips scroll
+value 1 = "reverse,1"		takes 3 seconds and eases with quantInOut
+value 2 = "3,quantInOut"
+
+event =   "easeModifierZ"	tweens tipsy z to 3
+value 1 = "tipsy,3"		takes 3 seconds and eases with elasticInOut
+value 2 = "3,elasticInOut"
+
+event =   "invert"		notes move left/right to swap positions
+value 1 = "1"			takes 1 seconds and eases with cubeInOut
+value 2 = "cubeInOut"
+
+check the stress events for actual example

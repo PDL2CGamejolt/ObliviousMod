@@ -1,0 +1,14 @@
+All: 
+tipsy (x,y,z)			simple wave
+drunk (x,y,z)			simple wave but changes based on note pos
+tipsySpeed (x,y,z)		
+drunkSpeed (x,y,z)
+scale (x,y) (default = 0.7)	note scale
+confusion (z)			note angle
+reverse (y)			scroll flip
+
+Strum Specific:
+strumOffset (+number) (x,y,z)
+scaleMulti (+number) (x,y) (default = 1)
+confusion (+number) (z)
+reverse (+number) (y)
