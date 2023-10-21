@@ -79,7 +79,7 @@ class TerminalState extends MusicBeatState
 		CommandList.push(new TerminalCommand("characters", "Shows the list of characters.", function(arguments:Array<String>)
 		{
 			UpdatePreviousText(false); // resets the text
-			UpdateText("\nmakehands.dat\nvanta.dat\nyosemite.dat");
+			UpdateText("\nmakehands.dat\nvanta.dat\ngriffin.dat");
 		}));
 		CommandList.push(new TerminalCommand("admin", "Shows the admin list, use grant to grant rights.", function(arguments:Array<String>)
 		{
@@ -127,9 +127,9 @@ class TerminalState extends MusicBeatState
 								FlxG.openURL("https://www.youtube.com/watch?v=_Wj6LdCP6K8");
 								System.exit(0);
 							});
-						case "yosemite.dat":
+						case "griffin.dat":
 							UpdatePreviousText(false); // resets the text
-							UpdateText("Oh hey! You have discovered a hidden song by the name of Dualyosemite!");
+							UpdateText("Play this, and never speak of it again.");
 							new FlxTimer().start(2, function(timer:FlxTimer)
 							{
 					                        PlayState.SONG = Song.loadFromJson("griffin", "griffin");
