@@ -253,7 +253,6 @@ class ChartingState extends MusicBeatState
 				player1: 'bf',
 				player2: 'dad',
 				gfVersion: 'gf',
-				songCredit: '',
 				speed: 1,
 				stage: 'stage',
 				validScore: false,
@@ -268,7 +267,7 @@ class ChartingState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Chart Editor - Charting " + StringTools.replace(_song.song, '-', ' '), '${FlxStringUtil.formatMoney(CoolUtil.getNoteAmount(_song), false)} Notes');
+		DiscordClient.changePresence("Chart Editor - Charting " + StringTools.replace(_song.song, '-', ' ');
 		#end
 
 		vortex = FlxG.save.data.chart_vortex;
@@ -781,12 +780,6 @@ class ChartingState extends MusicBeatState
 	{
 		var tab_group_songdata = new FlxUI(null, UI_box);
 		tab_group_songdata.name = "Data";
-
-		creditInputText = new FlxUIInputText(10, 30, 100, _song.songCredit, 8);
-		blockPressWhileTypingOn.push(creditInputText);
-
-		tab_group_songdata.add(creditInputText);
-		tab_group_songdata.add(new FlxText(creditInputText.x, creditInputText.y - 15, 0, 'Song Credit:'));
 
 		UI_box.addGroup(tab_group_songdata);
 	}
@@ -2450,10 +2443,9 @@ class ChartingState extends MusicBeatState
 		"\nSection: " + curSec +
 		"\n\nBeat: " + Std.string(curDecBeat).substring(0,4) +
 		"\n\nStep: " + curStep +
-		"\n\nBeat Snap: " + quantization + "th" + 
-		"\n\n" + FlxStringUtil.formatMoney(CoolUtil.getNoteAmount(_song), false) + ' Notes';
+		"\n\nBeat Snap: " + quantization + "th";
 
-		var playedSound:Array<Bool> = [false, false, false, false]; //Prevents ouchy GF sex sounds
+		var playedSound:Array<Bool> = [false, false, false, false]; 
 		curRenderedNotes.forEachAlive(function(note:Note) {
 			note.alpha = 1;
 			if(curSelectedNote != null) {
@@ -3144,7 +3136,7 @@ class ChartingState extends MusicBeatState
 		}
 		#if desktop
 		// Updating Discord Rich Presence (for updating Note Count)
-		DiscordClient.changePresence("Chart Editor - Charting " + StringTools.replace(_song.song, '-', ' '), '${FlxStringUtil.formatMoney(CoolUtil.getNoteAmount(_song), false)} Notes');
+		DiscordClient.changePresence("Chart Editor - Charting " + StringTools.replace(_song.song, '-', ' '));
 		#end
 	}
 
