@@ -267,7 +267,7 @@ class ChartingState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Chart Editor");
+                  DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));
 		#end
 
 		vortex = FlxG.save.data.chart_vortex;
@@ -3132,10 +3132,6 @@ class ChartingState extends MusicBeatState
 			}
 		}
 		}
-		#if desktop
-		// Updating Discord Rich Presence (for updating Note Count)
-		DiscordClient.changePresence("Chart Editor");
-		#end
 	}
 
 	function setupNoteData(i:Array<Dynamic>, isNextSection:Bool):Note
