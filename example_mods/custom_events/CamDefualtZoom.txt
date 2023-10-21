@@ -1,0 +1,7 @@
+Makes long camera zooms
+It can only work when the opponent clicks on the notes
+This is not an event 'Add Camera Zoom'
+
+Value 1: Change Zoom (defualt zoom = 1.0)
+
+0.9 or 1.0 or 1.1 - defualt zooms

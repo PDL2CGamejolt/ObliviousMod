@@ -1,0 +1,7 @@
+Makes a error box
+
+Value 1: Error text
+Value 2: Error box name
+
+
+credits to codding cat :D
