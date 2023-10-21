@@ -56,6 +56,9 @@ class StrumNote extends FlxSprite
 			if(ClientPrefs.noteStyleThing == 'TGT V4') {
 				skin = 'TGTNOTE_assets';
 			}
+			if(ClientPrefs.noteStyleThing == 'Spamhouse OG') {
+				skin = 'SPAMH_NOTE_assets';
+			}
 			if(ClientPrefs.colorQuants) {
 				skin = 'RED_NOTE_assets';
 			}
