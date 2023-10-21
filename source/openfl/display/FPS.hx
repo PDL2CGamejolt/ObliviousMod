@@ -35,7 +35,7 @@ class FPS extends TextField
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
 
-	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
+	public function new(x:Float = 45, y:Float = 10, color:Int = 0x000000)
 	{
 		super();
 
@@ -48,7 +48,7 @@ class FPS extends TextField
 		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/vcr.ttf").fontName, 14, color);
 		autoSize = RIGHT;
 		multiline = true;
-		text = "Frames Per Second: ";
+		text = "FPS: ";
 
 		cacheCount = 0;
 		currentTime = 0;
@@ -81,7 +81,7 @@ class FPS extends TextField
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-			text = (ClientPrefs.showFPS ? "Frames Per Second: " + currentFPS : "");
+			text = "FPS: " + currentFPS : "";
 			var memoryMegas:Float = 0;
 			
 			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
@@ -105,7 +105,7 @@ class FPS extends TextField
 				textColor = 0xFFFF0000;
 			}
 
-
+			text += "\nVanta Engine";
 			text += "\n";
 		}
 
