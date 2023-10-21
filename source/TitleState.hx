@@ -734,10 +734,8 @@ class TitleState extends MusicBeatState
 			{
 				if (logoBl.angle == -4)
 					FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut});
-				        FlxTween.y(logoBl, logoBl.y, 4, 4, {ease: FlxEase.quartInOut});
 				if (logoBl.angle == 4)
 					FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
-				        FlxTween.y(logoBl, logoBl.y, -4, 4, {ease: FlxEase.quartInOut});
 			}, 0);
 			if (playJingle) //Ignore deez
 			{
