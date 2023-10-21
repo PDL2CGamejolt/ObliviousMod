@@ -105,7 +105,7 @@ class TerminalState extends MusicBeatState
 							UpdateText("\n" + arguments[1] + " is not a valid user or character.");
 						case "makehands.dat":
 							UpdatePreviousText(false); // resets the text
-							UpdateText("Loading...");
+							UpdateText("\nLoading...");
 							expungedActivated = true;
                                                         new FlxTimer().start(1, function(timer:FlxTimer)
 							{
@@ -129,12 +129,15 @@ class TerminalState extends MusicBeatState
 							});
 						case "griffin.dat":
 							UpdatePreviousText(false); // resets the text
-							UpdateText("Play this, and never speak of it again.");
+							UpdateText("Watch this, delete it from your history, and never speak of it again.");
+							new FlxTimer().start(1.95, function(timer:FlxTimer)
+							{
+								UpdateText("And now, a**s*x!");
+							});
 							new FlxTimer().start(2, function(timer:FlxTimer)
 							{
-					                        PlayState.SONG = Song.loadFromJson("griffin", "griffin");
-					                        PlayState.SONG.validScore = false;
-				                        	LoadingState.loadAndSwitchState(new PlayState());
+								FlxG.openURL("https://www.youtube.com/watch?v=QtCoIkROcoQ");
+								System.exit(0);
 							});
 					}
 				}
