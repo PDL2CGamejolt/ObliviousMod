@@ -267,7 +267,7 @@ class ChartingState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Chart Editor - Charting " + StringTools.replace(_song.song, '-', ' '));
+		DiscordClient.changePresence("Chart Editor");
 		#end
 
 		vortex = FlxG.save.data.chart_vortex;
@@ -1871,8 +1871,6 @@ class ChartingState extends MusicBeatState
 		Conductor.songPosition = FlxG.sound.music.time;
 		_song.song = UI_songTitle.text;
 
-		_song.songCredit = creditInputText.text;
-
 		strumLineUpdateY();
 		for (i in 0...8){
 			strumLineNotes.members[i].y = strumLine.y;
@@ -3136,7 +3134,7 @@ class ChartingState extends MusicBeatState
 		}
 		#if desktop
 		// Updating Discord Rich Presence (for updating Note Count)
-		DiscordClient.changePresence("Chart Editor - Charting " + StringTools.replace(_song.song, '-', ' '));
+		DiscordClient.changePresence("Chart Editor");
 		#end
 	}
 
