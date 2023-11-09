@@ -408,7 +408,7 @@ class FreeplayState extends MusicBeatState
 				trace(poop + '\'s .ogg does not exist!');
 				FlxG.sound.play(Paths.sound('invalidJSON'));
 				FlxG.camera.shake(0.05, 0.05);
-				var funnyText = new FlxText(12, FlxG.height - 24, 0, "NO SONG FOUND");
+				var funnyText = new FlxText(12, FlxG.height - 24, 0, "Where's the song?");
 				funnyText.scrollFactor.set();
 				funnyText.screenCenter();
 				funnyText.x = 5;
