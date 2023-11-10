@@ -174,13 +174,13 @@ class PauseSubState extends MusicBeatSubstate
 			case 'Skip Time':
 				if (controls.UI_LEFT_P)
 				{
-					FlxG.sound.play(Paths.sound('speed'), 0.4);
+					FlxG.sound.play(Paths.sound('speeddown'), 0.4);
 					curTime -= 1000;
 					holdTime = 0;
 				}
 				if (controls.UI_RIGHT_P)
 				{
-					FlxG.sound.play(Paths.sound('speed'), 0.4);
+					FlxG.sound.play(Paths.sound('speedup'), 0.4);
 					curTime += 1000;
 					holdTime = 0;
 				}
