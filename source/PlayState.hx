@@ -3613,7 +3613,11 @@ class PlayState extends MusicBeatState
 				switch (swagCounter)
 				{
 					case 0:
-						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
+						if (FileSystem.exists(Paths.modsSounds('sounds', songName + '+' + 'intro3'))) {
+							FlxG.sound.play(Paths.sound(songName + '+' + 'intro3', 'ogg'), 0.6);
+						} else {
+							FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
+						}
 					case 1:
 						countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 						countdownReady.cameras = [camHUD];
@@ -3626,7 +3630,7 @@ class PlayState extends MusicBeatState
 						countdownReady.screenCenter();
 						countdownReady.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownReady);
-						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
+						FlxTween.tween(countdownReady, {y: countdownReady.y + 100, alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -3634,7 +3638,11 @@ class PlayState extends MusicBeatState
 								countdownReady.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
+						if (FileSystem.exists(Paths.modsSounds('sounds', songName + '+' + 'intro2'))) {
+							FlxG.sound.play(Paths.sound(songName + '+' + 'intro2', 'ogg'), 0.6);
+						} else {
+							FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
+						}
 					case 2:
 						countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 						countdownSet.cameras = [camHUD];
@@ -3646,7 +3654,7 @@ class PlayState extends MusicBeatState
 						countdownSet.screenCenter();
 						countdownSet.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownSet);
-						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
+						FlxTween.tween(countdownSet, {y: countdownSet.y + 100, alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -3654,7 +3662,11 @@ class PlayState extends MusicBeatState
 								countdownSet.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
+						if (FileSystem.exists(Paths.modsSounds('sounds', songName + '+' + 'intro1'))) {
+							FlxG.sound.play(Paths.sound(songName + '+' + 'intro1', 'ogg'), 0.6);
+						} else {
+							FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
+						}
 					case 3:
 						countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 						countdownGo.cameras = [camHUD];
@@ -3668,7 +3680,7 @@ class PlayState extends MusicBeatState
 						countdownGo.screenCenter();
 						countdownGo.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownGo);
-						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000 / playbackRate, {
+						FlxTween.tween(countdownGo, {y: countdownGo.y + 100, alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
 							{
@@ -3676,9 +3688,14 @@ class PlayState extends MusicBeatState
 								countdownGo.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
+						if (FileSystem.exists(Paths.modsSounds('sounds', songName + '+' + 'introGo'))) {
+							FlxG.sound.play(Paths.sound(songName + '+' + 'introGo', 'ogg'), 0.6);
+						} else {
+							FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
+						}
 					case 4:
 				}
+
 
 				notes.forEachAlive(function(note:Note) {
 					if(ClientPrefs.opponentStrums || !ClientPrefs.opponentStrums && ClientPrefs.mobileMidScroll || ClientPrefs.middleScroll || !note.mustPress)
