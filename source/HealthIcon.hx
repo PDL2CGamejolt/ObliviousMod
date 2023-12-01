@@ -3,7 +3,6 @@ package;
 import flixel.math.FlxMath;
 import flixel.FlxSprite;
 import openfl.utils.Assets as OpenFlAssets;
-import flixel.FlxG;
 
 using StringTools;
 
@@ -15,7 +14,7 @@ class HealthIcon extends FlxSprite
 	private var isPlayer:Bool = false;
 	private var char:String = '';
 
-	public function new(char:String = 'bf', isPlayer:Bool = false)
+	public function new(char:String = 'bf', isPlayer:Bool = false, ?allowGPU:Bool = true)
 	{
 		super();
 		isOldIcon = (char == 'bf-old');
@@ -85,18 +84,6 @@ class HealthIcon extends FlxSprite
 			var mult:Float = 1.2;
 			scale.set(mult, mult);
 			updateHitbox();
-		}
-	}
-
-	override function updateHitbox()
-	{
-		if (ClientPrefs.iconBounceType != 'Golden Apple' && ClientPrefs.iconBounceType != 'Dave and Bambi' || Type.getClassName(Type.getClass(FlxG.state)) != 'PlayState')
-		{
-		super.updateHitbox();
-		offset.x = iconOffsets[0];
-		offset.y = iconOffsets[1];
-		} else {
-		super.updateHitbox();
 		}
 	}
 
