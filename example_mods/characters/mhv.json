@@ -1,0 +1,51 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				200,
+				114
+			],
+			"indices": [
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "slap",
+			"loop": false,
+			"name": "slap"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/jaleta",
+	"position": [
+		-610,
+		-690
+	],
+	"healthicon": "mhenby",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		255,
+		33
+	],
+	"camera_position": [
+		-800,
+		-550
+	],
+	"sing_duration": 6.1,
+	"scale": 1.4
+}
