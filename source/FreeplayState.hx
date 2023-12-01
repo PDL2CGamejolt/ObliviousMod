@@ -306,7 +306,7 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 
-		scoreText.text = 'HIGHT SCORE: ' + lerpScore + 'Rating: ' + ' (' + ratingSplit.join('.') + '%)';
+		scoreText.text = 'HIGHT SCORE: ' + lerpScore + '/nRating:' + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 
 		var upP = controls.UI_UP_P;
