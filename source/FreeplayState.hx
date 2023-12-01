@@ -153,7 +153,7 @@ class FreeplayState extends MusicBeatState
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
-		scoreBG.alpha = 0.6;
+		scoreBG.alpha = 1;
 		add(scoreBG);
 
 		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
@@ -216,10 +216,10 @@ class FreeplayState extends MusicBeatState
 
 		#if PRELOAD_ALL
 		#if android
-		var leText:String = "Press X to listen to the Song / Press C to open the Gameplay Changers Menu / Press Y to reset the Song.";
+		var leText:String = "Press X to listen / Press C to open the Gameplay Changers Menu / Press Y to reset the Song.";
 		var size:Int = 16;
 		#else
-		var leText:String = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to reset the Song.";
+		var leText:String = "Press SPACE to listen / Press CTRL to open the Gameplay Changers Menu / Press RESET to reset the Song.";
 		var size:Int = 16;
 		#end
 		#else
@@ -306,7 +306,7 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 
-		scoreText.text = 'HIGH SCORE: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+		scoreText.text = 'HIGHT SCORE: ' + lerpScore + 'Rating: ' + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 
 		var upP = controls.UI_UP_P;
@@ -408,7 +408,7 @@ class FreeplayState extends MusicBeatState
 				trace(poop + '\'s .ogg does not exist!');
 				FlxG.sound.play(Paths.sound('invalidJSON'));
 				FlxG.camera.shake(0.05, 0.05);
-				var funnyText = new FlxText(12, FlxG.height - 24, 0, "Where's the song?");
+				var funnyText = new FlxText(12, FlxG.height - 24, 0, "Song Not Found");
 				funnyText.scrollFactor.set();
 				funnyText.screenCenter();
 				funnyText.x = 5;
@@ -483,11 +483,11 @@ class FreeplayState extends MusicBeatState
 
 					} else {
 					if(sys.FileSystem.exists(Paths.inst(poop + '/'  + poop)) && !sys.FileSystem.exists(Paths.json(poop + '/' + poop))) { //the json doesn't exist, but the song files do, or you put a typo in the name
-							CoolUtil.coolError("The JSON's name does not match with  " + poop + "!\nTry making them match.", "JS Engine Anti-Crash Tool");
+							CoolUtil.coolError("Hmmmm... The JSON's name does not match with  " + poop + "!\nTry making them match.", "JS Engine Anti-Crash Tool");
 					} else if(sys.FileSystem.exists(Paths.json(poop + '/' + poop)) && !sys.FileSystem.exists(Paths.inst(poop + '/'  + poop)))  {//the json exists, but the song files don't
-							CoolUtil.coolError("Your song seems to not have an Inst.ogg, check the folder name in 'songs'!", "JS Engine Anti-Crash Tool");
+							CoolUtil.coolError("Hmmmm... Your song seems to not have an Inst.ogg, check the folder name in 'songs'!", "JS Engine Anti-Crash Tool");
 				} else if(!sys.FileSystem.exists(Paths.json(poop + '/' + poop)) && !sys.FileSystem.exists(Paths.inst(poop + '/'  + poop))) { //neither the json nor the song files actually exist
-					CoolUtil.coolError("It appears that " + poop + " doesn't actually have a JSON, nor does it actually have voices/instrumental files!\nMaybe try fixing its name in weeks/" + WeekData.getWeekFileName() + "?", "JS Engine Anti-Crash Tool");
+					CoolUtil.coolError("Hmmmm... It appears that " + poop + " doesn't actually have a JSON, nor does it actually have voices/instrumental files!\nMaybe try fixing its name in weeks/" + WeekData.getWeekFileName() + "?", "JS Engine Anti-Crash Tool");
 				}
 			}
 		}
