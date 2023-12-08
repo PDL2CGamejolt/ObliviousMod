@@ -186,13 +186,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
-		var option:Option = new Option('Disable Chart Editor',
-			"If checked, disables the Chart Editor. Try opening it with this option enabled and see what happens!",
-			'antiCheatEnable',
-			'bool',
-			false);
-		addOption(option);
-
 		var option:Option = new Option('Instant Respawn',
 			"Instantly respawn when you die.",
 			'instaRestart',
@@ -221,8 +214,8 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Shit Gives Miss',
-			"If checked, hitting a Shit rating will count as a miss.",
+		var option:Option = new Option('Bruh Gives Miss',
+			"If checked, hitting a Bruh rating will count as a miss.",
 			'shitGivesMiss',
 			'bool',
 			false);
@@ -237,7 +230,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Enable Taunt Key',
-			"If checked, pressing the Taunt key will make BF go HEY!!",
+			"If checked, pressing the Taunt key will make BF go HEY!! (Pizza Tower Reference?!!1!!)",
 			'spaceVPose',
 			'bool',
 			true);
@@ -282,7 +275,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'hitsoundType',
 			'string',
 			'osu!mania',
-			['osu!mania', 'Dave And Bambi', 'Indie Cross', 'Snap', 'Clap', 'Generic Click', 'Keyboard Click', 'vine boom', 'ADOFAI', 'Discord Ping', "i'm spongebob!", 'Randomized']);
+			['osu!mania', 'Dave And Bambi', 'Indie Cross', 'Snap', 'Clap', 'Generic Click', 'Keyboard Click', 'vine boom', 'ADOFAI', 'Discord Ping', "i'm spongebob!", 'DDR']);
 		addOption(option);
 
 		var option:Option = new Option('Rating Offset',
