@@ -113,14 +113,12 @@ class VisualsUISubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 		
-		/* ignore this i was just making a joke about fnf's naughtiness option
 		var option:Option = new Option('Family Friendly Mode',
 			'If checked, makes everything family-friendly. Always remember to watch your Ps and Qs!',
 			'family',
 			'bool',
 			false);
 		addOption(option);
-		*/
 
 		var option:Option = new Option('Color Quantization',
 			'If checked, notes are colored based on their quantization.',
@@ -235,7 +233,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'noteStyleThing',
 			'string',
 			'Default',
-			['Default', 'VS Nonsense V2', 'VS AGOTI', 'Doki Doki+', 'TGT V4', 'DNB 3D']);
+			['Default', 'VS Nonsense V2', 'VS AGOTI', 'Doki Doki+', 'TGT V4', 'DNB 3D', 'Spamhouse OG']);
 		addOption(option);
 
 		var option:Option = new Option('BF Icon Style:',
@@ -259,7 +257,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'iconBounceType',
 			'string',
 			'Golden Apple',
-			['Golden Apple', 'Dave and Bambi', 'Old Psych', 'New Psych', 'VS Steve', 'Plank Engine']);
+			['Golden Apple', 'Dave and Bambi', 'Old Psych', 'New Psych', 'VS Steve', 'Plank Engine', 'None']);
 		addOption(option);
 
 		var option:Option = new Option('Note Splash Type:',
